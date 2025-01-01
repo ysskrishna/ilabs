@@ -1,3 +1,4 @@
+import * as blog from "./blog"
 import * as og from "./open-graph"
 import * as x from "./x"
 
@@ -13,4 +14,7 @@ export const templates = {
   "x:header-basic": x.header.basic,
   "x:header-minimalist": x.header.minimalist,
   "x:header-logo": x.header.logo,
+
+  // Blog
+  "blog:basic": blog.basic,
 }

@@ -1,0 +1,210 @@
+{
+  "name": "Custom-Theme",
+  "type": "dark",
+  "colors": {
+    "editor.foreground": "var(--shiki-color-text)"
+  },
+  "tokenColors": [
+    {
+      "scope": [
+        "punctuation",
+        "meta.brace.square",
+        "meta.brace.round",
+        "punctuation.definition.block.sequence.item.yaml",
+        "entity.other.document.begin.yaml",
+        "entity.other.document.end.yaml",
+        "punctuation.definition.tag.begin",
+        "punctuation.definition.tag.end"
+      ],
+      "settings": {
+        "foreground": "var(--shiki-color-text)"
+      }
+    },
+    {
+      "scope": [
+        "string.quoted.double punctuation.definition.string.begin",
+        "string.quoted.double punctuation.definition.string.end"
+      ],
+      "settings": {
+        "foreground": "var(--shiki-token-string-expression)"
+      }
+    },
+    {
+      "scope": ["keyword", "storage.type", "storage.modifier"],
+      "settings": {
+        "foreground": "var(--shiki-token-keyword)"
+      }
+    },
+
+    {
+      "name": "Variables",
+      "scope": ["variable", "string constant.other.placeholder"],
+      "settings": {
+        "foreground": "var(--shiki-color-text)"
+      }
+    },
+    {
+      "scope": [
+        "variable.other.constant",
+        "variable.other.readwrite.const",
+        "variable.other.object"
+      ],
+      "settings": {
+        "foreground": "var(--shiki-token-constant)"
+      }
+    },
+
+    {
+      "scope": ["comment"],
+      "settings": {
+        "foreground": "var(--shiki-token-comment)"
+      }
+    },
+    {
+      "name": "Function, Special Method",
+      "scope": [
+        "entity.name.function",
+        "meta.function-call",
+        "variable.function",
+        "support.function",
+        "keyword.other.special-method"
+      ],
+      "settings": {
+        "foreground": "var(--shiki-token-function)"
+      }
+    },
+    {
+      "scope": "support.class.component",
+      "settings": {
+        "foreground": "var(--shiki-token-constant)"
+      }
+    },
+    {
+      "scope": ["string.quoted.single", "string.quoted.double"],
+      "settings": {
+        "foreground": "var(--shiki-token-string-expression)"
+      }
+    },
+    {
+      "scope": [
+        "entity.name.type",
+        "variable.other.class",
+        "meta.type.annotation"
+      ],
+      "settings": {
+        "foreground": "var(--shiki-token-function)"
+      }
+    },
+    {
+      "scope": ["support.type"],
+      "settings": {
+        "foreground": "var(--shiki-token-constant)"
+      }
+    },
+    {
+      "scope": ["entity.name.tag.html", "punctuation.definition.tag.html"],
+      "settings": {
+        "foreground": "var(--shiki-token-string-expression)"
+      }
+    },
+
+    {
+      "scope": ["source.shell", "source.bash"],
+      "settings": {
+        "foreground": "var(--shiki-token-string)"
+      }
+    },
+
+    {
+      "scope": "support.type.property-name.json",
+      "settings": {
+        "foreground": "var(--shiki-token-keyword)"
+      }
+    },
+    {
+      "scope": [
+        "punctuation.separator.dictionary.key-value.json",
+        "punctuation.separator.pair.json"
+      ],
+      "settings": {
+        "foreground": "var(--shiki-token-punctuation)"
+      }
+    },
+
+    {
+      "scope": "string.quoted.double.json",
+      "settings": {
+        "foreground": "var(--shiki-token-string-expression)"
+      }
+    },
+
+    {
+      "scope": ["entity.name.tag", "punctuation.definition.tag"],
+      "settings": {
+        "foreground": "var(--shiki-token-string-expression)"
+      }
+    },
+    {
+      "scope": ["meta.jsx.children"],
+      "settings": {
+        "foreground": "var(--shiki-color-text)"
+      }
+    },
+    {
+      "scope": ["entity.other.attribute-name"],
+      "settings": {
+        "foreground": "var(--shiki-token-function)"
+      }
+    },
+
+    {
+      "scope": [
+        "source.shell entity.name.function",
+        "source.bash entity.name.function"
+      ],
+      "settings": {
+        "foreground": "var(--shiki-color-text)"
+      }
+    },
+
+    {
+      "scope": ["string.template"],
+      "settings": {
+        "foreground": "var(--shiki-token-string-expression)"
+      }
+    },
+    {
+      "scope": ["punctuation.definition.template-expression"],
+      "settings": {
+        "foreground": "var(--shiki-token-keyword)"
+      }
+    },
+
+    {
+      "scope": ["punctuation.separator.key-value"],
+      "settings": {
+        "foreground": "var(--shiki-token-keyword)"
+      }
+    },
+
+    {
+      "scope": ["constant"],
+      "settings": {
+        "foreground": "var(--shiki-token-constant)"
+      }
+    },
+
+    {
+      "scope": ["entity.name.tag.yaml"],
+      "settings": {
+        "foreground": "var(--shiki-token-keyword)"
+      }
+    },
+    {
+      "scope": ["string.unquoted.plain.out.yaml"],
+      "settings": {
+        "foreground": "var(--shiki-token-string-expression)"
+      }
+    }
+  ]
+}

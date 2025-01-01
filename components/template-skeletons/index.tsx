@@ -1,3 +1,4 @@
+import * as blog from "./blog"
 import * as og from "./open-graph"
 import * as x from "./x"
 
@@ -13,4 +14,7 @@ export const skeletons = {
   "x:header-basic": x.header.Basic,
   "x:header-minimalist": x.header.Minimalist,
   "x:header-logo": x.header.Logo,
+
+  // Blog Cover Image
+  "blog:basic": blog.Basic,
 }

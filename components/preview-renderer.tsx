@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect } from "react"
-import Image from "next/image"
 import { useTemplateStore } from "@/providers/template-store-provider"
 import satori from "satori"
 
@@ -34,7 +33,7 @@ export default function PreviewRenderer() {
         <TemplateComp
           // @ts-ignore
           template={template}
-          renderWatermark
+          renderWatermark={false}
         />,
         {
           // debug: process.env.NODE_ENV === "development",
@@ -69,12 +68,21 @@ export default function PreviewRenderer() {
 
   return (
     <AspectRatio ratio={16 / 9}>
-      <Image
+      {/* <Image
         alt="Preview"
         priority
         className="h-full w-full object-contain"
         width={template.canvas.width}
         height={template.canvas.height}
+        src={
+          template.previewSvg
+            ? `data:image/svg+xml;utf8,${encodeURIComponent(template.previewSvg)}`
+            : "/loading.svg"
+        }
+      /> */}
+      <img
+        alt="Preview"
+        className="h-full w-full object-contain"
         src={
           template.previewSvg
             ? `data:image/svg+xml;utf8,${encodeURIComponent(template.previewSvg)}`

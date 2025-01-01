@@ -13,7 +13,6 @@ import {
   BorderAllIcon,
   DotsHorizontalIcon,
   GridIcon,
-  LockClosedIcon,
   ValueNoneIcon,
 } from "@radix-ui/react-icons"
 
@@ -23,7 +22,6 @@ import {
   GridOverlayParams,
   toBackgroundShorthand,
 } from "@/lib/templates/elements/background"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -500,7 +498,7 @@ export function BackgroundForm() {
           <div className="grid gap-2 pt-2">
             <div className="flex justify-between">
               <div className="text-sm font-medium">Grid Overlay</div>
-              <Badge>New</Badge>
+              {/* <Badge>New</Badge> */}
             </div>
             <ResponsivePopover
               title="Grid Overlay"

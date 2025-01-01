@@ -12,7 +12,7 @@ import {
 
 export default function NotFound() {
   return (
-    <div className="flex h-[calc(100dvh-124px)] items-center justify-center">
+    <div className="flex h-96 items-center justify-center">
       <Card className="w-[460px]">
         <CardHeader>
           <CardTitle className="text-2xl">Page Not Found</CardTitle>
@@ -22,7 +22,7 @@ export default function NotFound() {
         </CardHeader>
         <CardFooter>
           <Button className="w-full" asChild>
-            <Link href="/">
+            <Link href="/" prefetch={false} title="Go to Homepage">
               Go to Homepage
               <ArrowRightIcon className="ml-2 h-4 w-4" />
             </Link>

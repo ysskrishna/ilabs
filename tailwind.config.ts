@@ -1,7 +1,8 @@
-import typography from "@tailwindcss/typography"
-import type { Config } from "tailwindcss"
-import tailwindCssAnimate from "tailwindcss-animate"
-import { fontFamily } from "tailwindcss/defaultTheme"
+import typography from "@tailwindcss/typography";
+import type { Config } from "tailwindcss";
+import tailwindCssAnimate from "tailwindcss-animate";
+import { fontFamily } from "tailwindcss/defaultTheme";
+const { nextui } = require("@nextui-org/react");
 
 const config: Config = {
   darkMode: ["class"],
@@ -10,6 +11,7 @@ const config: Config = {
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     container: {
@@ -61,18 +63,18 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+        "scrolling-banner": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-50% - var(--gap)/2))" },
         },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+        "scrolling-banner-vertical": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(calc(-50% - var(--gap)/2))" },
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+        "scrolling-banner": "scrolling-banner var(--duration) linear infinite",
+        "scrolling-banner-vertical": "scrolling-banner-vertical var(--duration) linear infinite",
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)", ...fontFamily.sans],
@@ -80,7 +82,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [tailwindCssAnimate, typography],
+  plugins: [nextui(), tailwindCssAnimate, typography],
 }
 
 export default config

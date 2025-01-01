@@ -35,24 +35,24 @@ export const imageRightTemplateDefault: ImageRightTemplate = {
   name: "og:image-right",
   params: {
     tag: {
-      text: "Marketing",
+      text: "ogimage.click",
       fontFamily: "inter",
       fontWeight: 400,
       fontSize: 20,
       color: "#030712",
     },
     title: {
-      text: "Generate Beautiful Open Graph Images",
+      text: "Create beautiful OG images for free.",
       fontFamily: "inter",
       fontWeight: 700,
       fontSize: 60,
       color: "#030712",
     },
     logo: {
-      url: absoluteUrl("/samples/logos/imgsrc.png"),
+      url: absoluteUrl("/logo.png"),
     },
     image: {
-      url: absoluteUrl("/samples/imgsrc.png"),
+      url: absoluteUrl("/samples/ogimage.png"),
     },
   },
   background: {

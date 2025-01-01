@@ -6,7 +6,11 @@ import { DownloadIcon } from "@radix-ui/react-icons"
 
 import { Button } from "@/components/ui/button"
 
-function initResvgWorker() {
+import { FormatSelector, ImageFormat } from "./format-selector"
+
+function initResvgWorker():
+  | ((msg: { svg: string; width: number; format?: string }) => Promise<string>)
+  | undefined {
   if (typeof window === "undefined") return
 
   const worker = new Worker(new URL("./resvg-worker.ts", import.meta.url))
@@ -37,43 +41,59 @@ const renderPNG = initResvgWorker()
 
 export default function SaveImageButton() {
   const { canvas, previewSvg } = useTemplateStore((state) => state)
-  const [pngDownloadUrl, setPngDownloadUrl] = useState<string>()
-  const [generatingPng, setGeneratingPng] = useState(false)
-  const pngAnchorElement = useRef<HTMLAnchorElement>(null)
+  const [downloadUrl, setDownloadUrl] = useState<string>()
+  const [generating, setGenerating] = useState(false)
+  const [format, setFormat] = useState<ImageFormat>("png")
+  const anchorElement = useRef<HTMLAnchorElement>(null)
 
   useEffect(() => {
-    if (pngDownloadUrl) {
-      pngAnchorElement.current?.click()
+    if (downloadUrl) {
+      anchorElement.current?.click()
+      URL.revokeObjectURL(downloadUrl) // 清理 URL
+      setDownloadUrl(undefined)
     }
-  }, [pngDownloadUrl])
+  }, [downloadUrl])
+
+  const downloadSvg = async () => {
+    if (!previewSvg) throw new Error("No SVG content")
+    const svgBlob = new Blob([previewSvg], { type: "image/svg+xml" })
+    return URL.createObjectURL(svgBlob)
+  }
+
+  const handleDownload = async () => {
+    try {
+      setGenerating(true)
+      let url: string | undefined
+
+      if (format === "svg") {
+        url = await downloadSvg()
+      } else {
+        if (!previewSvg) throw new Error("No SVG content")
+        url = await renderPNG?.({
+          svg: previewSvg,
+          width: canvas.width,
+          format,
+        })
+      }
+
+      setDownloadUrl(url)
+    } finally {
+      setGenerating(false)
+    }
+  }
 
   return (
-    <>
+    <div className="flex items-center gap-2">
+      <FormatSelector value={format} onChange={setFormat} />
       <a
-        ref={pngAnchorElement}
-        href={pngDownloadUrl}
-        download="image.png"
+        ref={anchorElement}
+        href={downloadUrl}
+        download={`og.${format}`}
         className="hidden"
+        title={`Download OG Image as ${format.toUpperCase()}`}
       />
-
-      <Button
-        onClick={async () => {
-          try {
-            setGeneratingPng(true)
-            const pngDownloadUrl = await renderPNG?.({
-              svg: previewSvg,
-              width: canvas.width,
-            })
-
-            // this will set the pngDownloadUrl and trigger the useEffect to download the image
-            setPngDownloadUrl(pngDownloadUrl as string)
-          } finally {
-            setGeneratingPng(false)
-          }
-        }}
-        disabled={generatingPng}
-      >
-        {generatingPng ? (
+      <Button onClick={handleDownload} disabled={generating}>
+        {generating ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -91,6 +111,6 @@ export default function SaveImageButton() {
         )}
         <span>Save Image</span>
       </Button>
-    </>
+    </div>
   )
 }

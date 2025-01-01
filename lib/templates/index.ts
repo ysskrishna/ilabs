@@ -1,5 +1,6 @@
 import { z } from "zod"
 
+import * as blog from "./blog"
 import * as og from "./open-graph"
 import * as x from "./x"
 
@@ -15,6 +16,9 @@ const templateNameSchema = z.union([
   z.literal("x:header-basic"),
   z.literal("x:header-minimalist"),
   z.literal("x:header-logo"),
+
+  // Blog
+  z.literal("blog:basic"),
 ])
 export type TemplateName = z.infer<typeof templateNameSchema>
 
@@ -30,6 +34,9 @@ export const templateSchema = z.discriminatedUnion("name", [
   x.header.basicTemplateSchema,
   x.header.minimalistTemplateSchema,
   x.header.logoTemplateSchema,
+
+  // Blog
+  blog.basicTemplateSchema,
 ])
 export type Template = z.infer<typeof templateSchema>
 
@@ -45,4 +52,7 @@ export const templateDefaults: Record<TemplateName, Template> = {
   "x:header-basic": x.header.basicTemplateDefault,
   "x:header-minimalist": x.header.minimalistTemplateDefault,
   "x:header-logo": x.header.logoTemplateDefault,
+
+  // Blog
+  "blog:basic": blog.basicTemplateDefault,
 }

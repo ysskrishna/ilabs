@@ -27,7 +27,7 @@ export const logoTemplateDefault: LogoTemplate = {
   name: "x:header-logo",
   params: {
     description: {
-      text: "Deploy app servers close to your users",
+      text: "Create Open Graph Images with one click",
       fontFamily: "inter",
       fontWeight: 600,
       fontSize: 48,

@@ -56,12 +56,18 @@ const templateFilters: TemplateFilter[] = [
     width: 1200,
     height: 630,
   },
-  // {
-  //   platform: "blog",
-  //   label: "Wide (16:9)",
-  //   width: 1200,
-  //   height: 630,
-  // },
+  {
+    platform: "x",
+    label: "Header",
+    width: 1500,
+    height: 500,
+  },
+  {
+    platform: "blog",
+    label: "Wide (16:9)",
+    width: 1200,
+    height: 630,
+  },
   // {
   //   platform: "facebook",
   //   label: "Post",
@@ -80,12 +86,6 @@ const templateFilters: TemplateFilter[] = [
   //   width: 1024,
   //   height: 512,
   // },
-  {
-    platform: "x",
-    label: "Header",
-    width: 1500,
-    height: 500,
-  },
   // {
   //   platform: "linkedin",
   //   label: "Post",
@@ -201,14 +201,41 @@ const templates = [
     height: 500,
     skeleton: skeletons["x:header-logo"],
   },
+  // Blog
+  {
+    platform: "blog",
+    name: "blog:basic",
+    width: 1200,
+    height: 630,
+    skeleton: skeletons["blog:basic"],
+  },
 ]
 
 export default function TemplateSelector() {
   const template = useTemplateStore((state) => state)
   const [selectedFilter, setSelectedFilter] = useState(templateFilters[0])
 
+  // 获取指定过滤条件下的第一个模板
+  const getFirstTemplateForFilter = (filter: TemplateFilter) => {
+    return templates.find(
+      (t) =>
+        t.platform === filter.platform &&
+        t.width === filter.width &&
+        t.height === filter.height
+    )?.name
+  }
+
+  // 处理过滤器选择
+  const handleFilterSelect = (filter: TemplateFilter) => {
+    setSelectedFilter(filter)
+    const firstTemplate = getFirstTemplateForFilter(filter)
+    if (firstTemplate) {
+      template.setTemplate(firstTemplate as Template["name"])
+    }
+  }
+
   return (
-    <div className="space-y-4">
+    <section className="space-y-4">
       <div className="space-y-2">
         <h2 className="sr-only text-sm font-medium">Choose a template</h2>
         <div className="flex gap-2">
@@ -216,15 +243,41 @@ export default function TemplateSelector() {
             ([platform, filters]) => {
               const PlatformLogo = platforms[platform as Platform].icon
 
+              // 如果只有一个子分类，直接渲染按钮
+              if (filters.length === 1) {
+                return (
+                  <Button
+                    key={platform}
+                    variant="outline"
+                    className={
+                      platform === selectedFilter.platform
+                        ? "border-2 border-primary bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground/90"
+                        : "hover:bg-accent hover:text-accent-foreground"
+                    }
+                    onClick={() => handleFilterSelect(filters[0])}
+                  >
+                    <PlatformLogo className="mr-1 size-4" />
+                    {platforms[platform as Platform].label}
+                  </Button>
+                )
+              }
+
+              // 有多个子分类时保持原有的下拉菜单
               return (
                 <DropdownMenu key={platform}>
                   <DropdownMenuTrigger asChild>
                     <Button
-                      variant={
+                      variant="outline"
+                      className={
                         platform === selectedFilter.platform
-                          ? "secondary"
-                          : "outline"
+                          ? "border-2 border-primary bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground/90"
+                          : "hover:bg-accent hover:text-accent-foreground"
                       }
+                      onClick={() => {
+                        if (platform !== selectedFilter.platform) {
+                          handleFilterSelect(filters[0])
+                        }
+                      }}
                     >
                       <PlatformLogo className="mr-1 size-4" />
                       {platforms[platform as Platform].label}
@@ -234,7 +287,7 @@ export default function TemplateSelector() {
                     {filters.map((filter) => (
                       <DropdownMenuItem
                         key={filter.label}
-                        onSelect={() => setSelectedFilter(filter)}
+                        onSelect={() => handleFilterSelect(filter)}
                       >
                         <div className="space-y-1">
                           <div className="font-medium">{filter.label}</div>
@@ -295,6 +348,6 @@ export default function TemplateSelector() {
         <CarouselPrevious className="left-2 lg:hidden" variant="secondary" />
         <CarouselNext className="right-2 lg:hidden" variant="secondary" />
       </Carousel>
-    </div>
+    </section>
   )
 }
