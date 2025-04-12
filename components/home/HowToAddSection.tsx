@@ -5,7 +5,7 @@ import { TabsWrapper } from "./howToAddSection/TabsWrapper"
 
 export default function HowToAddSection() {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <section className="mx-auto max-w-7xl py-16">
       <div className="text-center">
         <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
           How to Add Open Graph Image
