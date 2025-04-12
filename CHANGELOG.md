@@ -22,4 +22,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Guidance for integration with Next.js App Router.
 - Project setup instructions and contribution guidelines.
 
-[1.0.0]: https://github.com/ysskrishna/og-labs/releases/tag/v1.0.0
+[1.0.0]: https://github.com/ysskrishna/ilabs/releases/tag/v1.0.0

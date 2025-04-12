@@ -1,4 +1,4 @@
-# OG Labs
+# iLabs
 
 A free and open source tool for generating beautiful Open Graph images, Twitter/X headers, and blog covers - no signup required.
 
@@ -38,8 +38,8 @@ A free and open source tool for generating beautiful Open Graph images, Twitter/
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/ysskrishna/og-labs
-cd og-labs
+git clone https://github.com/ysskrishna/ilabs
+cd ilabs
 ```
 
 2. Install dependencies:

@@ -8,7 +8,7 @@ const config = {
     github: "https://github.com/ysskrishna",
     productHunt: "https://www.producthunt.com/@ysskrishna",
   },
-  productName: "OG Labs"
+  productName: "iLabs"
 };
 
 export default config;
