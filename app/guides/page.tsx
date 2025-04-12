@@ -1,5 +1,6 @@
 import { siteConfig } from "@/config/site"
 
+import config from "@/common/config"
 import { BlogPosts } from "./posts"
 
 export async function generateMetadata() {
@@ -9,11 +10,11 @@ export async function generateMetadata() {
     description: "Read OG Image Guides.",
     openGraph: {
       ...siteConfig.openGraph,
-      url: "https://ogImage.click/guides",
+      url: `${config?.baseUrl}/guides`,
     },
     twitter: {
       ...siteConfig.twitter,
-      site: "https://ogImage.click/guides",
+      site: `${config?.baseUrl}/guides`,
     },
   }
 }

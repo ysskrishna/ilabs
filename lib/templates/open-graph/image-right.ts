@@ -1,11 +1,12 @@
 import { z } from "zod"
 
+import config from "@/common/config"
 import { absoluteUrl } from "@/lib/url"
 
-import { backgroundSchema } from "../elements/background"
-import { canvasSchema } from "../elements/canvas"
-import { imageSchema } from "../elements/image"
-import { textSchema } from "../elements/text"
+import { backgroundSchema } from "@elements/background"
+import { canvasSchema } from "@elements/canvas"
+import { imageSchema } from "@elements/image"
+import { textSchema } from "@elements/text"
 
 export const imageRightTemplateSchema = z.object({
   name: z.literal("og:image-right"),
@@ -35,7 +36,7 @@ export const imageRightTemplateDefault: ImageRightTemplate = {
   name: "og:image-right",
   params: {
     tag: {
-      text: "ogimage.click",
+      text: config?.productName,
       fontFamily: "inter",
       fontWeight: 400,
       fontSize: 20,

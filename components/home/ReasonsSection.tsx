@@ -9,6 +9,7 @@ import {
   Zap,
 } from "lucide-react"
 
+import config from "@/common/config"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function ReasonsSection() {
@@ -17,7 +18,7 @@ export default function ReasonsSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2 className="mb-4 text-4xl font-bold text-gray-900">
-            Why Choose ogImage.click?
+            Why Choose {config?.productName}?
           </h2>
           <p className="text-xl text-gray-600">
             Everything you need to create stunning social media images in

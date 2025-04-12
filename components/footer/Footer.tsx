@@ -1,9 +1,7 @@
 import Link from "next/link"
-import { GithubIcon } from "lucide-react"
-import { FaBluesky, FaXTwitter } from "react-icons/fa6"
+import { FaGithub, FaGlobe, FaLinkedin, FaProductHunt } from "react-icons/fa"
 
-import { siteConfig } from "@/config/site"
-import { Button } from "@/components/ui/button"
+import config from "@/common/config"
 import { ModeToggle } from "@/components/mode-toggle"
 
 export default function Footer() {
@@ -12,58 +10,62 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <nav className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+          <div>
             <Link
-              href={siteConfig.url}
-              title="Free OG Image Generator"
+              href="/"
+              title={config?.productName}
               prefetch={false}
-              className="font-mono font-semibold hover:underline"
+              className="flex items-center space-x-2"
             >
-              Free OG Image Generator
+              <img src="/logo.svg" alt="Logo" className="h-8 w-8" />
+              <span className="text-2xl font-bold">
+                {config?.productName}
+              </span>
             </Link>
-
-            <Button variant="link" asChild>
-              <Link
-                href="/guides"
-                prefetch={false}
-                title="Guides"
-                aria-label="Guides"
-              >
-                Guides
-              </Link>
-            </Button>
+          </div>
           </div>
 
           <div className="flex flex-col items-start gap-2 sm:items-start">
             <div className="flex items-center gap-x-4">
               <Link
-                href={siteConfig.authors[0].twitter || "/"}
+                href={config?.author?.url}
                 prefetch={false}
-                title="Follow me on Twitter"
+                title="View my Website"
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                aria-label="Twitter"
+                aria-label="Website"
               >
-                <FaXTwitter className="h-5 w-5 text-black dark:text-white" />
+                <FaGlobe className="h-5 w-5 text-black dark:text-white" />
               </Link>
               <Link
-                href={siteConfig.authors[0].bluesky || "/"}
+                href={config?.author?.linkedin}
                 prefetch={false}
+                title="Connect on LinkedIn"
                 target="_blank"
-                title="Follow me on Bluesky"
                 rel="noopener noreferrer nofollow"
-                aria-label="Bluesky"
+                aria-label="LinkedIn"
               >
-                <FaBluesky className="h-5 w-5 text-black dark:text-white" />
+                <FaLinkedin className="h-5 w-5 text-black dark:text-white" />
               </Link>
               <Link
-                href="https://github.com/weijunext/ogimage-click"
+                href={config?.author?.github}
                 prefetch={false}
-                title="ogimage-click"
+                title="View on GitHub"
                 target="_blank"
                 rel="noopener noreferrer nofollow"
                 aria-label="GitHub"
               >
-                <GithubIcon className="h-5 w-5 text-black dark:text-white" />
+                <FaGithub className="h-5 w-5 text-black dark:text-white" />
+              </Link>
+              <Link
+                href={config?.author?.productHunt}
+                prefetch={false}
+                title="Follow on Product Hunt"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                aria-label="Product Hunt"
+              >
+                <FaProductHunt className="h-5 w-5 text-black dark:text-white" />
               </Link>
               <ModeToggle />
             </div>

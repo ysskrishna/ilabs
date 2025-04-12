@@ -1,17 +1,18 @@
-
-# ogimage.click
+# OG Labs
 
 A free and open source tool for generating beautiful Open Graph images, Twitter/X headers, and blog covers - no signup required.
 
 ## 🌟 Features
 
 - **Multiple Template Types**
+
   - Open Graph Images
   - Twitter/X Headers
   - Blog Cover Images
   - Custom Templates
 
 - **Rich Customization**
+
   - Custom backgrounds (solid colors & gradients)
   - Grid and noise overlays
   - Logo upload support
@@ -35,17 +36,20 @@ A free and open source tool for generating beautiful Open Graph images, Twitter/
 ### Installation
 
 1. Clone the repository:
+
 ```bash
-git clone https://github.com/weijunext/ogimage-click.git
-cd ogimage.click
+git clone https://github.com/ysskrishna/og-labs
+cd og-labs
 ```
 
 2. Install dependencies:
+
 ```bash
 pnpm install
 ```
 
 3. Set up environment variables in `.env.local`:
+
 ```bash
 NEXT_PUBLIC_BASE_URL=http://localhost:3000
 NEXT_PUBLIC_API_URL=http://localhost:3000/api
@@ -54,6 +58,7 @@ NEXT_PUBLIC_GOOGLE_ADSENSE_ID=
 ```
 
 4. Start the development server:
+
 ```bash
 pnpm dev
 ```
@@ -100,13 +105,11 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🌐 Links
-
-- [Website](https://ogimage.click/)
-- [Issue Tracker](https://github.com/weijunext/ogimage-click/issues)
-
 ---
 
-Built by [Jude Wei](https://github.com/weijunext) 
+Built by [ysskrishna](https://github.com/ysskrishna)
 
-This project is inspired by and built upon [imgsrc-app](https://github.com/FadyMak/imgsrc-app) 
+This project is inspired by and built upon
+
+[ogImage.click](https://weijunext/ogimage-click)
+[imgsrc-app](https://github.com/FadyMak/imgsrc-app)

@@ -1,11 +1,12 @@
 import { z } from "zod"
 
+import config from "@/common/config"
 import { absoluteUrl } from "@/lib/url"
 
-import { backgroundSchema } from "../elements/background"
-import { canvasSchema } from "../elements/canvas"
-import { imageSchema } from "../elements/image"
-import { textSchema } from "../elements/text"
+import { backgroundSchema } from "@elements/background"
+import { canvasSchema } from "@elements/canvas"
+import { imageSchema } from "@elements/image"
+import { textSchema } from "@elements/text"
 
 export const basicTemplateSchema = z.object({
   name: z.literal("og:basic"),
@@ -34,7 +35,7 @@ export const basicTemplateDefault: BasicTemplate = {
   name: "og:basic",
   params: {
     title: {
-      text: "ogImage.click",
+      text: config?.productName,
       fontFamily: "inter",
       fontWeight: 700,
       fontSize: 52,

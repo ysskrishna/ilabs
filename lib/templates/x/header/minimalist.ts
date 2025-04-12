@@ -1,8 +1,9 @@
 import { z } from "zod"
 
-import { backgroundSchema } from "../../elements/background"
-import { canvasSchema } from "../../elements/canvas"
-import { textSchema } from "../../elements/text"
+import config from "@/common/config"
+import { backgroundSchema } from "@elements/background"
+import { canvasSchema } from "@elements/canvas"
+import { textSchema } from "@elements/text"
 
 export const minimalistTemplateSchema = z.object({
   name: z.literal("x:header-minimalist"),
@@ -30,7 +31,7 @@ export const minimalistTemplateDefault: MinimalistTemplate = {
   name: "x:header-minimalist",
   params: {
     title: {
-      text: "ogImage.click",
+      text: config?.productName,
       fontFamily: "inter",
       fontWeight: 600,
       fontSize: 48,
