@@ -1,5 +1,12 @@
 import { InfoCircledIcon } from "@radix-ui/react-icons"
 
+import { CopyApiRequestButton } from "@/components/copy-api-request-button"
+import { BackgroundForm } from "@/components/forms/background"
+import HowToAddSection from "@/components/home/HowToAddSection"
+import PreviewRenderer from "@/components/preview-renderer"
+import SaveImageButton from "@/components/save-image-button"
+import TemplateForm from "@/components/template-form"
+import TemplateSelector from "@/components/template-selector"
 import {
   Card,
   CardContent,
@@ -9,23 +16,12 @@ import {
 } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { CopyApiRequestButton } from "@/components/copy-api-request-button"
-import { BackgroundForm } from "@/components/forms/background"
-import Hero from "@/components/home/Hero"
-import HowToAddSection from "@/components/home/HowToAddSection"
-import PreviewRenderer from "@/components/preview-renderer"
-import SaveImageButton from "@/components/save-image-button"
-import TemplateForm from "@/components/template-form"
-import TemplateSelector from "@/components/template-selector"
 
 import ReasonsSection from "../components/home/ReasonsSection"
 
 export default function Home() {
   return (
     <div>
-      <div className="pb-6">
-        <Hero />
-      </div>
       <div className="space-y-4">
         <TemplateSelector />
 

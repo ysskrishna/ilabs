@@ -5,7 +5,7 @@ import { GeistMono } from "geist/font/mono"
 import { GeistSans } from "geist/font/sans"
 import type { Metadata } from "next"
 
-import GoogleAdsense from "@/app/GoogleAdsense"
+// import GoogleAdsense from "@/app/GoogleAdsense"
 import GoogleAnalytics from "@/app/GoogleAnalytics"
 import Footer from "@/components/footer/Footer"
 import Header from "@/components/header/Header"
@@ -49,7 +49,7 @@ export default async function RootLayout({
         {process.env.NODE_ENV === "production" ? (
           <>
             <GoogleAnalytics />
-            <GoogleAdsense />
+            {/* <GoogleAdsense /> */}
             {/* <SpeedInsights />
             <Analytics /> */}
           </>
