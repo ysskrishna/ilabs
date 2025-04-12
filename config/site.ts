@@ -1,28 +1,24 @@
+import config from "@/common/config";
 import { SiteConfig } from "@/types/siteConfig";
-
-export const SITE_OWNER = "Jude Wei";
-export const BASE_URL = "https://ogimage.click";
-export const TWITTER_URL = "https://x.com/intent/follow?screen_name=judewei_dev";
-export const BLUESKY_URL = "https://bsky.app/profile/judewei.bsky.social";
 
 
 const baseSiteConfig = {
-  name: "Free OG Image Generator",
-  title: "Free OG Image Generator",
+  name: config?.productName,
+  title: config?.productName,
   description:
     "Create beautiful OG images, Twitter/X Header Images & more for free, in simple clicks.",
-  url: BASE_URL,
-  metadataBase: new URL(BASE_URL),
+  url: config?.baseUrl,
+  metadataBase: new URL(config?.baseUrl),
   keywords: [],
   authors: [
     {
-      name: SITE_OWNER,
-      url: BASE_URL,
-      twitter: TWITTER_URL,
-      bluesky: BLUESKY_URL,
+      name: config?.author?.name,
+      url: config?.author?.url,
+      linkedin: config?.author?.linkedin,
+      github: config?.author?.github,
     }
   ],
-  creator: SITE_OWNER,
+  creator: config?.author?.name,
   themeColors: [
     { media: '(prefers-color-scheme: light)', color: 'white' },
     { media: '(prefers-color-scheme: dark)', color: 'black' },

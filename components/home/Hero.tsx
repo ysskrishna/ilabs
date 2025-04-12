@@ -1,7 +1,8 @@
 import { Spacer } from "@nextui-org/react"
 
-import { siteConfig } from "@/config/site"
+import config from "@/common/config"
 import { ogs, xHeaders } from "@/components/home/Images"
+import { siteConfig } from "@/config/site"
 
 export default function Hero() {
   return (
@@ -11,7 +12,7 @@ export default function Hero() {
           <span className="inline-flex items-center">
             <span className="mr-2 animate-pulse text-blue-500">✦</span>
             <span className="rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text px-4 py-2 text-transparent transition-all duration-300 hover:from-purple-600 hover:to-blue-600">
-              ogImage.click
+              {config?.productName}
             </span>
             <span className="ml-2 animate-pulse text-blue-500">✦</span>
           </span>{" "}

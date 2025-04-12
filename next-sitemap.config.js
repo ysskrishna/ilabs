@@ -1,7 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
 
 module.exports = {
-  siteUrl: process.env.NEXT_PUBLIC_BASE_URL || "https://ogimage.click",
+  siteUrl: process.env.NEXT_PUBLIC_BASE_URL,
   generateRobotsTxt: true,
   sitemapSize: 7000,
   exclude: ["*.webp", "/manifest.webmanifest"],

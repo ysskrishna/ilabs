@@ -1,3 +1,4 @@
+import config from "@/common/config"
 import { absoluteUrl } from "@/lib/url"
 
 interface Props {
@@ -15,7 +16,7 @@ export function Watermark({ style }: Props) {
     >
       <img
         src={absoluteUrl("/assets/watermark.svg")}
-        alt="ogimage.click"
+        alt={config?.productName}
         style={{
           // watermark svg has a 2.7 aspect ratio
           width: "8.1rem",
