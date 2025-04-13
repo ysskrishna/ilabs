@@ -14,7 +14,7 @@ export default function Header() {
             prefetch={false}
             className="flex items-center space-x-2"
           >
-            <img src="/logo.svg" alt="Logo" className="h-8 w-8" />
+            <img src="/logo.svg" alt="Logo" className="h-8 w-8 transition-all duration-300 dark:invert" />
             <span className="text-2xl font-bold">
               {config?.productName}
             </span>

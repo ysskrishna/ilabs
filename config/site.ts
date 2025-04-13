@@ -27,7 +27,7 @@ const baseSiteConfig = {
   icons: {
     icon: "/favicon.ico",
     shortcut: "/logo.svg",
-    apple: "/logo.svg", // apple-touch-icon.png
+    apple: "/logo.svg",
   },
 }
 
