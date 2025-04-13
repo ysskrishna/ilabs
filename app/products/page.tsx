@@ -77,10 +77,9 @@ export default function ProductsPage() {
                   </div>
                   {product.productHuntId && (
                     <div className="pt-4">
-                      <a 
-                        href={`${product.url}?embed=true&utm_source=badge-featured&utm_medium=badge`} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
+                      <div 
+                        onClick={() => window.open(`${product.url}?embed=true&utm_source=badge-featured&utm_medium=badge`, '_blank', 'noopener,noreferrer')}
+                        className="cursor-pointer"
                       >
                         <img 
                           src={`https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=${product.productHuntId}&theme=${theme === 'dark' ? 'dark' : 'neutral'}`} 
@@ -89,7 +88,7 @@ export default function ProductsPage() {
                           width="250" 
                           height="54" 
                         />
-                      </a>
+                      </div>
                     </div>
                   )}
                 </div>
