@@ -1,12 +1,12 @@
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
-
 import { formatDate, getBlogPosts } from "./utils"
 
 export function BlogPosts() {
   let allBlogs = getBlogPosts()
 
   return (
-    <div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {allBlogs
         .sort((a, b) => {
           if (
@@ -19,17 +19,22 @@ export function BlogPosts() {
         .map((post) => (
           <Link
             key={post.slug}
-            className="mb-4 flex flex-col space-y-1"
             href={`/blogs/${post.slug}`}
+            className="block"
           >
-            <div className="flex w-full flex-col space-x-0 md:flex-row md:space-x-2">
-              <p className="w-[180px] tabular-nums text-neutral-600 dark:text-neutral-400">
-                {formatDate(post.metadata.publishedAt, false)}
-              </p>
-              <p className="tracking-tight text-neutral-900 dark:text-neutral-100">
-                {post.metadata.title}
-              </p>
-            </div>
+            <Card className="hover:shadow-lg transition-shadow h-full">
+              <CardHeader>
+                <CardTitle>{post.metadata.title}</CardTitle>
+                <CardDescription className="pt-2">
+                  {post.metadata.summary}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="text-sm text-muted-foreground">
+                  {formatDate(post.metadata.publishedAt, false)}
+                </div>
+              </CardContent>
+            </Card>
           </Link>
         ))}
     </div>

@@ -1,6 +1,7 @@
-import { siteConfig } from "@/config/site"
-
 import config from "@/common/config"
+import { Input } from "@/components/ui/input"
+import { siteConfig } from "@/config/site"
+import { Search } from "lucide-react"
 import { BlogPosts } from "./posts"
 
 export async function generateMetadata() {
@@ -21,9 +22,18 @@ export async function generateMetadata() {
 
 export default function Page() {
   return (
-    <section>
-      <h2 className="mb-8 text-2xl font-semibold tracking-tighter">Blogs</h2>
+    <div>
+      <h1 className="text-4xl font-bold mb-8">Our Blogs</h1>
+      
+      <div className="relative mb-8">
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+        <Input
+          placeholder="Search blogs..."
+          className="pl-12 h-14 text-lg"
+        />
+      </div>
+
       <BlogPosts />
-    </section>
+    </div>
   )
 }
