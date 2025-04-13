@@ -2,10 +2,10 @@ import { z } from "zod"
 
 import { absoluteUrl } from "@/lib/url"
 
-import { backgroundSchema } from "../elements/background"
-import { canvasSchema } from "../elements/canvas"
-import { imageSchema } from "../elements/image"
-import { textSchema } from "../elements/text"
+import { backgroundSchema } from "@elements/background"
+import { canvasSchema } from "@elements/canvas"
+import { imageSchema } from "@elements/image"
+import { textSchema } from "@elements/text"
 
 export const noticeTemplateSchema = z.object({
   name: z.literal("og:notice"),

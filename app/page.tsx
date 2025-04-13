@@ -17,7 +17,7 @@ import {
 import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-import ReasonsSection from "../components/home/ReasonsSection"
+import ReasonsSection from "@/components/home/ReasonsSection"
 
 export default function Home() {
   return (

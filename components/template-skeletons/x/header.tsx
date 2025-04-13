@@ -1,4 +1,4 @@
-import { Skeleton } from "../skeleton"
+import { Skeleton } from "@/components/template-skeletons/skeleton"
 
 export function Basic() {
   return (

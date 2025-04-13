@@ -1,8 +1,8 @@
 import { z } from "zod"
 
-import { backgroundSchema } from "../../elements/background"
-import { canvasSchema } from "../../elements/canvas"
-import { textSchema } from "../../elements/text"
+import { backgroundSchema } from "@elements/background"
+import { canvasSchema } from "@elements/canvas"
+import { textSchema } from "@elements/text"
 
 export const basicTemplateSchema = z.object({
   name: z.literal("x:header-basic"),

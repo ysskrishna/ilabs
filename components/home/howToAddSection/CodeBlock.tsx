@@ -5,7 +5,7 @@ export function HtmlCodeBlock() {
     <Card>
       <CardContent className="p-6">
         <h3 className="mb-4 text-lg font-semibold">1. Save the image</h3>
-        <p className="mb-4 text-sm text-gray-600">
+        <p className="mb-4 text-sm text-gray-600 dark:text-gray-300">
           Save your generated OG image as <code>og.png</code> in your
           website&apos;s root directory.
         </p>
@@ -28,7 +28,7 @@ export function HtmlCodeBlock() {
 <meta property="og:site_name" content="Your Site Name" />`}</code>
           </pre>
         </div>
-        <p className="mt-4 text-sm text-gray-500">
+        <p className="mt-4 text-sm text-gray-500 dark:text-gray-300">
           Make sure to replace <code>yourdomain.com</code> with your actual
           domain name.
         </p>
@@ -42,10 +42,10 @@ export function NextjsCodeBlock() {
     <Card>
       <CardContent className="p-6">
         <h3 className="mb-4 text-lg font-semibold">1. Save the image</h3>
-        <p className="mb-4 text-sm text-gray-600">
+        <p className="mb-4 text-sm text-gray-600 dark:text-gray-300">
           Save your generated OG image in one of these locations:
         </p>
-        <ul className="mb-4 list-disc space-y-2 pl-5 text-sm text-gray-600">
+        <ul className="mb-4 list-disc space-y-2 pl-5 text-sm text-gray-600 dark:text-gray-300">
           <li>
             <code>public/og.png</code> - for static images
           </li>
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
 }`}</code>
           </pre>
         </div>
-        <p className="mt-4 text-sm text-gray-500">
+        <p className="mt-4 text-sm text-gray-500 dark:text-gray-300">
           Next.js will automatically handle the image path and hosting for you.
         </p>
 

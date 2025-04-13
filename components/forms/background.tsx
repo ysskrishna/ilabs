@@ -16,12 +16,6 @@ import {
   ValueNoneIcon,
 } from "@radix-ui/react-icons"
 
-import { patterns } from "@/lib/patterns"
-import {
-  GradientDirection,
-  GridOverlayParams,
-  toBackgroundShorthand,
-} from "@/lib/templates/elements/background"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -39,8 +33,14 @@ import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Slider } from "@/components/ui/slider"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { patterns } from "@/lib/patterns"
+import {
+  GradientDirection,
+  GridOverlayParams,
+  toBackgroundShorthand,
+} from "@/lib/templates/elements/background"
 
-import { ResponsivePopover } from "../responsive-popover"
+import { ResponsivePopover } from "@/components/responsive-popover"
 
 const solidColors = [
   // red/pink

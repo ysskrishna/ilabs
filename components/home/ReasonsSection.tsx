@@ -17,10 +17,10 @@ export default function ReasonsSection() {
     <div className="w-full py-16">
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-4xl font-bold text-gray-900">
+          <h2 className="mb-4 text-4xl font-bold">
             Why Choose {config?.productName}?
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-gray-600 dark:text-gray-300">
             Everything you need to create stunning social media images in
             seconds
           </p>
@@ -36,12 +36,12 @@ export default function ReasonsSection() {
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 p-3 transition-colors duration-300 group-hover:bg-blue-100">
                   <reason.icon className="h-6 w-6 text-blue-600" />
                 </div>
-                <CardTitle className="text-xl font-semibold text-gray-900">
+                <CardTitle className="text-xl font-semibold">
                   {reason.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600">{reason.description}</p>
+                <p className="text-gray-600 dark:text-gray-300">{reason.description}</p>
               </CardContent>
             </Card>
           ))}
