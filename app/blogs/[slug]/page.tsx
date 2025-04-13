@@ -26,11 +26,11 @@ export async function generateMetadata({ params }: { params: Params }) {
     description: post?.metadata.summary,
     openGraph: {
       ...siteConfig.openGraph,
-      url: `${baseUrl}/guides/${post?.slug}`,
+      url: `${baseUrl}/blogs/${post?.slug}`,
     },
     twitter: {
       ...siteConfig.twitter,
-      url: `${baseUrl}/guides/${post?.slug}`,
+      url: `${baseUrl}/blogs/${post?.slug}`,
     },
   }
 }

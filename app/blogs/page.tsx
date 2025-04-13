@@ -6,15 +6,15 @@ import { BlogPosts } from "./posts"
 export async function generateMetadata() {
   return {
     ...siteConfig,
-    title: `Guides | ${siteConfig.name}`,
-    description: "Read OG Image Guides.",
+    title: `Blogs | ${siteConfig.name}`,
+    description: "Read Blogs.",
     openGraph: {
       ...siteConfig.openGraph,
-      url: `${config?.baseUrl}/guides`,
+      url: `${config?.baseUrl}/blogs`,
     },
     twitter: {
       ...siteConfig.twitter,
-      site: `${config?.baseUrl}/guides`,
+      site: `${config?.baseUrl}/blogs`,
     },
   }
 }
@@ -22,7 +22,7 @@ export async function generateMetadata() {
 export default function Page() {
   return (
     <section>
-      <h2 className="mb-8 text-2xl font-semibold tracking-tighter">Guides</h2>
+      <h2 className="mb-8 text-2xl font-semibold tracking-tighter">Blogs</h2>
       <BlogPosts />
     </section>
   )
