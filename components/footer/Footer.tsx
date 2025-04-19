@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { FaGithub, FaGlobe, FaLinkedin, FaProductHunt } from "react-icons/fa"
+import { FaGithub, FaGlobe, FaHeart, FaLinkedin, FaProductHunt } from "react-icons/fa"
 
 import config from "@/common/config"
 import { ModeToggle } from "@/components/mode-toggle"
@@ -23,6 +23,15 @@ export default function Footer() {
               </span>
             </Link>
           </div>
+          </div>
+
+          <div className="text-start sm:text-center">
+            <Link
+              href="/creator"
+              className="text flex items-center gap-2 sm:justify-center"
+            >
+              Made with <FaHeart className="h-4 w-4 text-black dark:text-white" /> by ysskrishna
+            </Link>
           </div>
 
           <div className="flex flex-col items-start gap-2 sm:items-start">
@@ -71,6 +80,7 @@ export default function Footer() {
             </div>
           </div>
         </nav>
+
       </div>
     </footer>
   )
