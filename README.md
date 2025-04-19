@@ -1,30 +1,12 @@
 # iLabs
 
-A free and open source tool for generating beautiful Open Graph images, Twitter/X headers, and blog covers - no signup required.
+A collection of free developer tools and resources, including image generation tools, boilerplate templates, utility applications, and more - designed to help developers streamline their workflow and enhance their projects.
 
 ## 🌟 Features
 
-- **Multiple Template Types**
+## 🌐 Live Demo
 
-  - Open Graph Images
-  - Twitter/X Headers
-  - Blog Cover Images
-  - Custom Templates
-
-- **Rich Customization**
-
-  - Custom backgrounds (solid colors & gradients)
-  - Grid and noise overlays
-  - Logo upload support
-  - Professional typography
-  - Multiple export formats (PNG, JPEG, WebP)
-
-- **Developer Experience**
-  - Ready-to-use HTML meta tags
-  - Next.js App Router integration
-  - Real-time preview
-  - No authentication required
-  - Free and open source
+Visit [https://ilabs.vercel.app](https://ilabs.vercel.app) to try the tools online.
 
 ## 🚀 Getting Started
 
@@ -63,6 +45,8 @@ NEXT_PUBLIC_GOOGLE_ADSENSE_ID=
 pnpm dev
 ```
 
+Visit `http://localhost:3000` to access the application.
+
 ## 🛠️ Tech Stack
 
 - [Next.js 15](https://nextjs.org/)
@@ -71,25 +55,6 @@ pnpm dev
 - [Radix UI](https://www.radix-ui.com/)
 - [Satori](https://github.com/vercel/satori)
 - [Zod](https://zod.dev/)
-
-## 📖 Usage
-
-1. Choose a template type (OG Image, Twitter Header, or Blog Cover)
-2. Customize your content (text, colors, images)
-3. Preview in real-time
-4. Export in your preferred format
-5. Use the generated meta tags in your project
-
-### Example Meta Tags
-
-```html
-<meta property="og:title" content="Your Page Title" />
-<meta property="og:description" content="Your page description" />
-<meta property="og:image" content="https://yourdomain.com/og.png" />
-<meta property="og:url" content="https://yourdomain.com" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://yourdomain.com/og.png" />
-```
 
 ## 🤝 Contributing
 
@@ -111,7 +76,7 @@ This project is licensed under the GNU Affero General Public License v3.0 (AGPL-
 
 Built by [ysskrishna](https://github.com/ysskrishna)
 
-This project is inspired by and built upon
+This project is inspired by and built upon:
 
-[ogImage.click](https://weijunext/ogimage-click)
-[imgsrc-app](https://github.com/FadyMak/imgsrc-app)
+- [ogImage.click](https://github.com/weijunext/ogimage-click)
+- [imgsrc-app](https://github.com/FadyMak/imgsrc-app)
