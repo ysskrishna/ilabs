@@ -18,7 +18,7 @@ export default function ReasonsSection() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 text-center">
           <h2 className="mb-4 text-4xl font-bold">
-            Why Choose {config?.productName}?
+            Why Choose {config?.productName} OG Image Generator?
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300">
             Everything you need to create stunning social media images in

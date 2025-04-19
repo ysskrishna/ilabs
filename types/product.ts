@@ -8,4 +8,5 @@ export interface Product {
   url: string;
   productHuntId?: string;
   featured?: boolean;
+  isInternal?: boolean;
 } 

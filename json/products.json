@@ -7,7 +7,8 @@
     "category": "Design Tool",
     "features": ["Open Graph", "Social Media", "Image Generator", "SEO", "No Signup"],
     "url": "/products/og-image-generator",
-    "featured": true
+    "featured": true,
+    "isInternal": true
   },
   {
     "id": 1,
@@ -18,7 +19,8 @@
     "features": ["TypeScript", "React", "Express", "SEO", "TailwindCSS"],
     "url": "https://www.producthunt.com/posts/express-react-typescript-seo-starter",
     "productHuntId": "947185",
-    "featured": true
+    "featured": true,
+    "isInternal": false
   },
   {
     "id": 2,
@@ -29,7 +31,8 @@
     "features": ["Python", "FastAPI", "SQLAlchemy", "Redis", "Docker"],
     "url": "https://www.producthunt.com/products/fastapi-sync-async-starter-template",
     "productHuntId": "945292",
-    "featured": true
+    "featured": true,
+    "isInternal": false
   },
   {
     "id": 3,
@@ -40,7 +43,8 @@
     "features": ["File System", "CLI", "Organization"],
     "url": "https://www.producthunt.com/products/directory-printer",
     "productHuntId": "867506",
-    "featured": true
+    "featured": true,
+    "isInternal": false
   },
   {
     "id": 4,
@@ -51,7 +55,8 @@
     "features": ["Python", "Tkinter", "GUI", "Poetry"],
     "url": "https://www.producthunt.com/products/tkinter-poetry-starter-template",
     "productHuntId": "896349",
-    "featured": true
+    "featured": true,
+    "isInternal": false
   },
   {
     "id": 5,
@@ -60,7 +65,8 @@
     "price": "Free",
     "category": "Cloud Storage",
     "features": ["File Storage", "Sharing", "Cloud"],
-    "url": "https://github.com/ysskrishna/dropbox-lite"
+    "url": "https://github.com/ysskrishna/dropbox-lite",
+    "isInternal": false
   },
   {
     "id": 6,
@@ -69,7 +75,8 @@
     "price": "Free",
     "category": "Crypto",
     "features": ["Solana", "Trading", "Automation", "Crypto"],
-    "url": "https://github.com/ysskrishna/solana-trading-bot"
+    "url": "https://github.com/ysskrishna/solana-trading-bot",
+    "isInternal": false
   },
   {
     "id": 7,
@@ -78,7 +85,8 @@
     "price": "Free",
     "category": "Library",
     "features": ["Books", "Management", "Organization"],
-    "url": "https://github.com/ysskrishna/libmate"
+    "url": "https://github.com/ysskrishna/libmate",
+    "isInternal": false
   },
   {
     "id": 8,
@@ -87,7 +95,8 @@
     "price": "Free",
     "category": "Design",
     "features": ["Pixel Art", "Animation", "Graphics"],
-    "url": "https://github.com/ysskrishna/PixelMotion"
+    "url": "https://github.com/ysskrishna/PixelMotion",
+    "isInternal": false
   },
   {
     "id": 9,
@@ -96,7 +105,8 @@
     "price": "Free",
     "category": "E-commerce",
     "features": ["E-commerce", "Products", "Shopping"],
-    "url": "https://github.com/ysskrishna/shopzone"
+    "url": "https://github.com/ysskrishna/shopzone",
+    "isInternal": false
   },
   {
     "id": 10,
@@ -105,7 +115,8 @@
     "price": "Free",
     "category": "Analytics",
     "features": ["Analytics", "Metrics", "Visualization"],
-    "url": "https://github.com/ysskrishna/metricflow"
+    "url": "https://github.com/ysskrishna/metricflow",
+    "isInternal": false
   },
   {
     "id": 11,
@@ -114,7 +125,8 @@
     "price": "Free",
     "category": "AI",
     "features": ["AI", "Chatbot", "Support", "Automation"],
-    "url": "https://github.com/ysskrishna/ai-support-bot"
+    "url": "https://github.com/ysskrishna/ai-support-bot",
+    "isInternal": false
   },
   {
     "id": 12,
@@ -123,6 +135,7 @@
     "price": "Free",
     "category": "HR",
     "features": ["Recruitment", "Chatbot", "HR", "Automation"],
-    "url": "https://github.com/ysskrishna/crew-recruiting-chatbot-app"
+    "url": "https://github.com/ysskrishna/crew-recruiting-chatbot-app",
+    "isInternal": false
   }
 ] 

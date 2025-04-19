@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og.webp",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: "OG Image Generator"
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "OG Image Generator",
     description: "Create beautiful Open Graph images, Twitter/X headers, and blog covers in just a few clicks.",
-    images: ["/og.webp"]
+    images: ["/og.png"]
   }
 }
 
@@ -49,8 +49,8 @@ export default function OGImageGenerator() {
     <div>
       <div className="space-y-4">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2 text-center">OG Image Generator</h1>
-          <p className="text-lg text-muted-foreground mb-4 text-center">
+          <h1 className="text-4xl font-bold mb-2">OG Image Generator</h1>
+          <p className="text-lg text-muted-foreground mb-4">
             Create beautiful Open Graph images, Twitter/X headers, and blog covers in just a few clicks.
           </p>
         </div>
