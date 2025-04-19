@@ -163,9 +163,6 @@ const linearGradients = [
     colorStops: ["#60A5FA", "#34D399"],
   },
   {
-    colorStops: ["#BBF7D0", "#4ADE80", "#22C55E"],
-  },
-  {
     colorStops: ["#BBF7D0", "#22C55E"],
   },
   {
@@ -199,7 +196,74 @@ const linearGradients = [
   },
   {
     colorStops: ["#F5F7FA", "#C3CFE2"],
-  }
+  },
+
+
+  {colorStops: ["#6DE195","#C4E759"]},
+  {colorStops: ["#41C7AF","#54E38E"]},
+  {colorStops: ["#ABC7FF","#C1E3FF"]},
+  {colorStops: ["#5583EE","#41D8DD"]},
+  {colorStops: ["#A16BFE","#DEB0DF"]},
+  {colorStops: ["#D279EE","#F8C390"]},
+  {colorStops: ["#F78FAD","#FDEB82"]},
+  {colorStops: ["#A43AB2","#E13680"]},
+  {colorStops: ["#9D2E7D","#E16E93"]},
+  {colorStops: ["#F5CCF6","#F1EEF9"]},
+  {colorStops: ["#F0EFF0","#FAF8F9"]}
+]
+
+const circularGradients = [
+  // Warm gradients
+  { colorStops: ["#EC4899", "#F97316", "#FCD34D"] }, // Vibrant sunset
+  { colorStops: ["#F43F5E", "#F97316"] }, // Coral
+  { colorStops: ["#FF7E5F", "#FEB47B"] }, // Peach
+  { colorStops: ["#FCA5A5", "#FCD34D", "#FDE68A"] }, // Soft warm
+
+  // Cool gradients
+  { colorStops: ["#4F46E5", "#0EA5E9"] }, // Indigo Sky
+  { colorStops: ["#D1FAE5", "#6EE7B7", "#3B82F6"] }, // Frost Mint
+
+  // Nature inspired
+  { colorStops: ["#22C55E", "#3B82F6", "#14B8A6"] }, // Forest meets lake
+  { colorStops: ["#10B981", "#A3E635", "#FACC15"] }, // Tropical
+  { colorStops: ["#65A30D", "#22C55E", "#5EEAD4"] }, // Garden
+
+  // Monochrome & Greyscale
+  { colorStops: ["#111827", "#374151"] }, // Dark steel
+  { colorStops: ["#F3F4F6", "#E5E7EB", "#D1D5DB"] }, // Light to lighter
+  { colorStops: ["#1F2937", "#111827", "#000000"] }, // Midnight
+
+  // Neon / Futuristic
+  { colorStops: ["#D946EF", "#9333EA", "#6366F1"] }, // Electric purple
+  { colorStops: ["#34D399", "#06B6D4", "#818CF8"] }, // Aurora borealis
+
+  // Retro / Vaporwave
+  { colorStops: ["#F472B6", "#C084FC", "#60A5FA"] }, // Vapor pink-blue
+  { colorStops: ["#FF8C42", "#EC4899", "#8B5CF6"] }, // Sunset Miami
+
+  // Pastels
+  { colorStops: ["#FBCFE8", "#BFDBFE", "#C4B5FD"] }, // Soft Pastel
+  { colorStops: ["#E0F2FE", "#FBCFE8", "#E9D5FF"] }, // Cloud Cotton Candy
+
+  // Dramatic / Cinematic
+  { colorStops: ["#000000", "#1E3A8A", "#38BDF8"] }, // Nightfall
+  { colorStops: ["#7F1D1D", "#DC2626", "#F59E0B"] }, // Inferno
+
+
+  {colorStops: ["#6DE195","#C4E759"]},
+  {colorStops: ["#41C7AF","#54E38E"]},
+  {colorStops: ["#99E5A2","#D4FC78"]},
+  {colorStops: ["#ABC7FF","#C1E3FF"]},
+  {colorStops: ["#6CACFF","#8DEBFF"]},
+  {colorStops: ["#5583EE","#41D8DD"]},
+  {colorStops: ["#A16BFE","#DEB0DF"]},
+  {colorStops: ["#D279EE","#F8C390"]},
+  {colorStops: ["#F78FAD","#FDEB82"]},
+  {colorStops: ["#BC3D2F","#A16BFE"]},
+  {colorStops: ["#A43AB2","#E13680"]},
+  {colorStops: ["#9D2E7D","#E16E93"]},
+  {colorStops: ["#F5CCF6","#F1EEF9"]},
+  {colorStops: ["#121317","#323B42"]}
 ]
 
 const DEFAULT_LINEAR_GRADIENT_DIRECTION: GradientDirection = "to top right"
@@ -313,22 +377,29 @@ export function BackgroundForm() {
     return DEFAULT_LINEAR_GRADIENT_DIRECTION
   }
 
-  const handleColorStopsChange = (newColorStops: string[]) => {
-    if (gradientType === "linear") {
+  const handleGradientTypeChange = (type: GradientType) => {
+    setGradientType(type)
+    const currentColorStops = template.background.type === "linear-gradient" || template.background.type === "radial-gradient"
+      ? template.background.colorStops
+      : ["#000000", "#ffffff"]
+    
+    if (type === "linear") {
       template.setBackground({
         type: "linear-gradient",
-        direction: getCurrentDirection(),
-        colorStops: newColorStops,
-        noise: currentGradient.noise,
-        gridOverlay: currentGradient.gridOverlay,
+        direction: template.background.type === "linear-gradient" 
+          ? template.background.direction 
+          : DEFAULT_LINEAR_GRADIENT_DIRECTION,
+        colorStops: currentColorStops,
+        noise: template.background.noise,
+        gridOverlay: template.background.gridOverlay,
       })
     } else {
       template.setBackground({
         type: "radial-gradient",
         direction: "circle at center",
-        colorStops: newColorStops,
-        noise: currentGradient.noise,
-        gridOverlay: currentGradient.gridOverlay,
+        colorStops: currentColorStops,
+        noise: template.background.noise,
+        gridOverlay: template.background.gridOverlay,
       })
     }
   }
@@ -356,7 +427,7 @@ export function BackgroundForm() {
                     <Label>Gradient Type</Label>
                     <RadioGroup
                       value={gradientType}
-                      onValueChange={(v) => setGradientType(v as GradientType)}
+                      onValueChange={(v) => handleGradientTypeChange(v as GradientType)}
                     >
                       <div className="flex gap-2">
                         <RadioGroupItem value="linear" id="linear" />
@@ -367,238 +438,272 @@ export function BackgroundForm() {
                     </RadioGroup>
                   </div>
 
-                  {gradientType === "linear" && (
-                    <>
-                      <div className="space-y-2">
-                        <RadioGroup
-                          value={
-                            template.background.type === "linear-gradient"
-                              ? JSON.stringify(template.background.colorStops)
-                              : undefined
-                          }
-                          onValueChange={(v) => {
-                            template.setBackground({
-                              type: "linear-gradient",
-                              colorStops: JSON.parse(v),
-                              direction: template.background.type === "linear-gradient" 
-                                ? template.background.direction 
-                                : DEFAULT_LINEAR_GRADIENT_DIRECTION,
-                              noise: template.background.noise,
-                              gridOverlay: template.background.gridOverlay,
-                            })
-                          }}
-                        >
-                          <div className="flex flex-wrap gap-1">
-                            {linearGradients.map(({ colorStops }) => (
-                              <div
-                                key={JSON.stringify(colorStops)}
-                                className="size-9 min-h-9 min-w-9"
-                              >
-                                <RadioGroupItem
-                                  value={JSON.stringify(colorStops)}
-                                  id={JSON.stringify(colorStops)}
-                                  className="peer sr-only"
-                                />
-                                <Label
-                                  htmlFor={JSON.stringify(colorStops)}
-                                  className="block aspect-square cursor-pointer rounded-md border-2 border-muted bg-popover hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                                  style={{
-                                    background: toBackgroundShorthand({
+                  <div className="space-y-2">
+                    <RadioGroup
+                      value={
+                        (template.background.type === "linear-gradient" || template.background.type === "radial-gradient")
+                          ? JSON.stringify(template.background.colorStops)
+                          : undefined
+                      }
+                      onValueChange={(v) => {
+                        const colorStops = JSON.parse(v)
+                        if (gradientType === "linear") {
+                          template.setBackground({
+                            type: "linear-gradient",
+                            colorStops,
+                            direction: template.background.type === "linear-gradient" 
+                              ? template.background.direction 
+                              : DEFAULT_LINEAR_GRADIENT_DIRECTION,
+                            noise: template.background.noise,
+                            gridOverlay: template.background.gridOverlay,
+                          })
+                        } else {
+                          template.setBackground({
+                            type: "radial-gradient",
+                            colorStops,
+                            direction: "circle at center",
+                            noise: template.background.noise,
+                            gridOverlay: template.background.gridOverlay,
+                          })
+                        }
+                      }}
+                    >
+                      <div className="flex flex-wrap gap-1">
+                        {(gradientType === "linear" ? linearGradients : circularGradients).map(({ colorStops }) => (
+                          <div
+                            key={JSON.stringify(colorStops)}
+                            className="size-9 min-h-9 min-w-9"
+                          >
+                            <RadioGroupItem
+                              value={JSON.stringify(colorStops)}
+                              id={JSON.stringify(colorStops)}
+                              className="peer sr-only"
+                            />
+                            <Label
+                              htmlFor={JSON.stringify(colorStops)}
+                              className="block aspect-square cursor-pointer rounded-md border-2 border-muted bg-popover hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                              style={{
+                                background: gradientType === "linear"
+                                  ? toBackgroundShorthand({
                                       type: "linear-gradient",
                                       direction: template.background.type === "linear-gradient"
                                         ? template.background.direction
                                         : DEFAULT_LINEAR_GRADIENT_DIRECTION,
                                       colorStops,
+                                    })
+                                  : toBackgroundShorthand({
+                                      type: "radial-gradient",
+                                      direction: "circle at center",
+                                      colorStops,
                                     }),
-                                  }}
-                                ></Label>
-                              </div>
-                            ))}
+                              }}
+                            ></Label>
                           </div>
-                        </RadioGroup>
+                        ))}
                       </div>
+                    </RadioGroup>
+                  </div>
 
+                  {
+                    gradientType === "linear" && (
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
-                          <Label>Direction</Label>
-                        </div>
+                      <Label>Direction</Label>
+                    </div>
 
-                        <Card className="p-2">
-                          <RadioGroup
-                            value={template.background.type === "linear-gradient" ? template.background.direction : DEFAULT_LINEAR_GRADIENT_DIRECTION}
-                            onValueChange={(v) => {
+                    <Card className="p-2">
+                      <RadioGroup
+                        value={template.background.type === "linear-gradient" ? template.background.direction : DEFAULT_LINEAR_GRADIENT_DIRECTION}
+                        onValueChange={(v) => {
+                          if (template.background.type === "linear-gradient") {
+                            const direction = v as GradientDirection
+                            const newAngle = directionToAngle[direction]
+                            setAngle(newAngle)
+                            template.setBackground({
+                              ...template.background,
+                              direction: direction,
+                            })
+                          }
+                        }}
+                      >
+                        <div className="grid grid-cols-8 gap-2">
+                          <div>
+                            <RadioGroupItem
+                              value="to top"
+                              id="to-top"
+                              className="peer sr-only"
+                            />
+                            <Label
+                              htmlFor="to-top"
+                              className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                            >
+                              <ArrowUpIcon className="h-4 w-4" />
+                            </Label>
+                          </div>
+
+                          <div>
+                            <RadioGroupItem
+                              value="to top right"
+                              id="to-top-right"
+                              className="peer sr-only"
+                            />
+                            <Label
+                              htmlFor="to-top-right"
+                              className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                            >
+                              <ArrowTopRightIcon className="h-4 w-4" />
+                            </Label>
+                          </div>
+
+                          <div>
+                            <RadioGroupItem
+                              value="to right"
+                              id="to-right"
+                              className="peer sr-only"
+                            />
+                            <Label
+                              htmlFor="to-right"
+                              className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                            >
+                              <ArrowRightIcon className="h-4 w-4" />
+                            </Label>
+                          </div>
+
+                          <div>
+                            <RadioGroupItem
+                              value="to bottom right"
+                              id="to-bottom-right"
+                              className="peer sr-only"
+                            />
+                            <Label
+                              htmlFor="to-bottom-right"
+                              className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                            >
+                              <ArrowBottomRightIcon className="h-4 w-4" />
+                            </Label>
+                          </div>
+
+                          <div>
+                            <RadioGroupItem
+                              value="to bottom"
+                              id="to-bottom"
+                              className="peer sr-only"
+                            />
+                            <Label
+                              htmlFor="to-bottom"
+                              className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                            >
+                              <ArrowDownIcon className="h-4 w-4" />
+                            </Label>
+                          </div>
+
+                          <div>
+                            <RadioGroupItem
+                              value="to bottom left"
+                              id="to-bottom-left"
+                              className="peer sr-only"
+                            />
+                            <Label
+                              htmlFor="to-bottom-left"
+                              className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                            >
+                              <ArrowBottomLeftIcon className="h-4 w-4" />
+                            </Label>
+                          </div>
+
+                          <div>
+                            <RadioGroupItem
+                              value="to left"
+                              id="to-left"
+                              className="peer sr-only"
+                            />
+                            <Label
+                              htmlFor="to-left"
+                              className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                            >
+                              <ArrowLeftIcon className="h-4 w-4" />
+                            </Label>
+                          </div>
+
+                          <div>
+                            <RadioGroupItem
+                              value="to top left"
+                              id="to-top-left"
+                              className="peer sr-only"
+                            />
+                            <Label
+                              htmlFor="to-top-left"
+                              className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                            >
+                              <ArrowTopLeftIcon className="h-4 w-4" />
+                            </Label>
+                          </div>
+                        </div>
+                      </RadioGroup>
+
+                      <div className="mt-4 flex items-center gap-2">
+                        <Slider
+                          value={[angle]}
+                          onValueChange={([value]) => {
+                            setAngle(value)
+                            if (template.background.type === "linear-gradient") {
+                              template.setBackground({
+                                ...template.background,
+                                direction: `${value}deg`,
+                              })
+                            }
+                          }}
+                          max={355}
+                          step={1}
+                        />
+                        <div className="flex items-center ml-2 gap-1">
+                          <AngleIcon className="h-5 w-5 " />
+                          <Input
+                            type="number"
+                            value={angle}
+                            min={0}
+                            max={355}
+                            onChange={(e) => {
+                              const value = Math.min(355, Math.max(0, Number(e.target.value)))
+                              setAngle(value)
                               if (template.background.type === "linear-gradient") {
-                                const direction = v as GradientDirection
-                                const newAngle = directionToAngle[direction]
-                                setAngle(newAngle)
                                 template.setBackground({
                                   ...template.background,
-                                  direction: direction,
+                                  direction: `${value}deg`,
                                 })
                               }
                             }}
-                          >
-                            <div className="grid grid-cols-8 gap-2">
-                              <div>
-                                <RadioGroupItem
-                                  value="to top"
-                                  id="to-top"
-                                  className="peer sr-only"
-                                />
-                                <Label
-                                  htmlFor="to-top"
-                                  className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                                >
-                                  <ArrowUpIcon className="h-4 w-4" />
-                                </Label>
-                              </div>
-
-                              <div>
-                                <RadioGroupItem
-                                  value="to top right"
-                                  id="to-top-right"
-                                  className="peer sr-only"
-                                />
-                                <Label
-                                  htmlFor="to-top-right"
-                                  className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                                >
-                                  <ArrowTopRightIcon className="h-4 w-4" />
-                                </Label>
-                              </div>
-
-                              <div>
-                                <RadioGroupItem
-                                  value="to right"
-                                  id="to-right"
-                                  className="peer sr-only"
-                                />
-                                <Label
-                                  htmlFor="to-right"
-                                  className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                                >
-                                  <ArrowRightIcon className="h-4 w-4" />
-                                </Label>
-                              </div>
-
-                              <div>
-                                <RadioGroupItem
-                                  value="to bottom right"
-                                  id="to-bottom-right"
-                                  className="peer sr-only"
-                                />
-                                <Label
-                                  htmlFor="to-bottom-right"
-                                  className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                                >
-                                  <ArrowBottomRightIcon className="h-4 w-4" />
-                                </Label>
-                              </div>
-
-                              <div>
-                                <RadioGroupItem
-                                  value="to bottom"
-                                  id="to-bottom"
-                                  className="peer sr-only"
-                                />
-                                <Label
-                                  htmlFor="to-bottom"
-                                  className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                                >
-                                  <ArrowDownIcon className="h-4 w-4" />
-                                </Label>
-                              </div>
-
-                              <div>
-                                <RadioGroupItem
-                                  value="to bottom left"
-                                  id="to-bottom-left"
-                                  className="peer sr-only"
-                                />
-                                <Label
-                                  htmlFor="to-bottom-left"
-                                  className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                                >
-                                  <ArrowBottomLeftIcon className="h-4 w-4" />
-                                </Label>
-                              </div>
-
-                              <div>
-                                <RadioGroupItem
-                                  value="to left"
-                                  id="to-left"
-                                  className="peer sr-only"
-                                />
-                                <Label
-                                  htmlFor="to-left"
-                                  className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                                >
-                                  <ArrowLeftIcon className="h-4 w-4" />
-                                </Label>
-                              </div>
-
-                              <div>
-                                <RadioGroupItem
-                                  value="to top left"
-                                  id="to-top-left"
-                                  className="peer sr-only"
-                                />
-                                <Label
-                                  htmlFor="to-top-left"
-                                  className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                                >
-                                  <ArrowTopLeftIcon className="h-4 w-4" />
-                                </Label>
-                              </div>
-                            </div>
-                          </RadioGroup>
-
-                          <div className="mt-4 flex items-center gap-2">
-                            <Slider
-                              value={[angle]}
-                              onValueChange={([value]) => {
-                                setAngle(value)
-                                if (template.background.type === "linear-gradient") {
-                                  template.setBackground({
-                                    ...template.background,
-                                    direction: `${value}deg`,
-                                  })
-                                }
-                              }}
-                              max={355}
-                              step={1}
-                            />
-                            <div className="flex items-center ml-2 gap-1">
-                              <AngleIcon className="h-5 w-5 " />
-                              <Input
-                                type="number"
-                                value={angle}
-                                min={0}
-                                max={355}
-                                onChange={(e) => {
-                                  const value = Math.min(355, Math.max(0, Number(e.target.value)))
-                                  setAngle(value)
-                                  if (template.background.type === "linear-gradient") {
-                                    template.setBackground({
-                                      ...template.background,
-                                      direction: `${value}deg`,
-                                    })
-                                  }
-                                }}
-                                className="w-20"
-                              />
-                            </div>
-                          </div>
-                        </Card>
+                            className="w-20"
+                          />
+                        </div>
                       </div>
-                    </>
+                    </Card>
+                    </div>
                   )}
 
                   <div className="space-y-2">
                     <Label>Color Stops</Label>
                     <ColorStopList
                       colorStops={currentGradient.colorStops}
-                      onChange={handleColorStopsChange}
+                      onChange={(newColorStops) => {
+                        if (gradientType === "linear") {
+                          template.setBackground({
+                            type: "linear-gradient",
+                            direction: getCurrentDirection(),
+                            colorStops: newColorStops,
+                            noise: currentGradient.noise,
+                            gridOverlay: currentGradient.gridOverlay,
+                          })
+                        } else {
+                          template.setBackground({
+                            type: "radial-gradient",
+                            direction: "circle at center",
+                            colorStops: newColorStops,
+                            noise: currentGradient.noise,
+                            gridOverlay: currentGradient.gridOverlay,
+                          })
+                        }
+                      }}
                     />
                   </div>
                 </div>
