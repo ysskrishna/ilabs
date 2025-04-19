@@ -1,5 +1,5 @@
-import { useRef, useState } from "react"
 import { Cross2Icon, FileIcon } from "@radix-ui/react-icons"
+import { useEffect, useRef, useState } from "react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -18,10 +18,14 @@ export function ImageSelector({
   onChange: (v: string | undefined) => void
   initialFileName?: string
 }) {
-  const [file, setFile] = useState<File | undefined>(
-    initialFileName ? new File([], initialFileName) : undefined
-  )
+  const [file, setFile] = useState<File | undefined>(undefined)
   const inputElement = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    if (initialFileName) {
+      setFile(new File([], initialFileName))
+    }
+  }, [initialFileName])
 
   function handleRemove() {
     setFile(undefined)
