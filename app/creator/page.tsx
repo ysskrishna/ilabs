@@ -98,7 +98,9 @@ export default function CreatorPage() {
       <div className="relative w-full bg-gradient-to-br from-primary/10 via-background to-background">
         <div className="container mx-auto px-4 py-8 md:py-16">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">👋 Hi there,  I'm {userData.name}!</h1>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+            {userData.name} <span className="block mt-2 text-2xl text-muted-foreground">@ysskrishna</span>
+          </h1>
           </div>
         </div>
       </div>
@@ -116,6 +118,9 @@ export default function CreatorPage() {
                 />
               </div>
               <CardTitle className="text-2xl font-bold">{userData.name}</CardTitle>
+              <CardDescription className="text-md mb-1">
+                <span className="text-xl text-muted-foreground">@ysskrishna</span>
+              </CardDescription>
               <CardDescription className="text-md">
                 Full Stack Developer <span className="mx-1">|</span> Founding Engineer <span className="mx-1">|</span> IITM Graduate
               </CardDescription>
@@ -205,9 +210,9 @@ export default function CreatorPage() {
                     {techStack.languages.map((tech) => (
                       <Badge key={tech.name} variant="secondary" className="flex items-center gap-1.5 px-2.5 py-1">
                         <img 
-                          src={`https://cdn.simpleicons.org/${tech.logo}`} 
-                          alt={tech.name} 
-                          className="h-3.5 w-3.5" 
+                          src={`https://cdn.simpleicons.org/${tech.logo}/000`} 
+                          alt={tech.name}
+                          className="h-3.5 w-3.5 dark:invert" 
                         />
                         {tech.name}
                       </Badge>
@@ -221,9 +226,9 @@ export default function CreatorPage() {
                     {techStack.technologies.map((tech) => (
                       <Badge key={tech.name} variant="secondary" className="flex items-center gap-1.5 px-2.5 py-1">
                         <img 
-                          src={`https://cdn.simpleicons.org/${tech.logo}`} 
+                          src={`https://cdn.simpleicons.org/${tech.logo}/000`} 
                           alt={tech.name} 
-                          className="h-3.5 w-3.5" 
+                          className="h-3.5 w-3.5 dark:invert" 
                         />
                         {tech.name}
                       </Badge>
@@ -237,9 +242,9 @@ export default function CreatorPage() {
                     {techStack.databases.map((tech) => (
                       <Badge key={tech.name} variant="secondary" className="flex items-center gap-1.5 px-2.5 py-1">
                         <img 
-                          src={`https://cdn.simpleicons.org/${tech.logo}`} 
+                          src={`https://cdn.simpleicons.org/${tech.logo}/000`} 
                           alt={tech.name} 
-                          className="h-3.5 w-3.5" 
+                          className="h-3.5 w-3.5 dark:invert" 
                         />
                         {tech.name}
                       </Badge>
@@ -253,9 +258,9 @@ export default function CreatorPage() {
                     {techStack.cloudDevOps.map((tech) => (
                       <Badge key={tech.name} variant="secondary" className="flex items-center gap-1.5 px-2.5 py-1">
                         <img 
-                          src={`https://cdn.simpleicons.org/${tech.logo}`} 
+                          src={`https://cdn.simpleicons.org/${tech.logo}/000`} 
                           alt={tech.name} 
-                          className="h-3.5 w-3.5" 
+                          className="h-3.5 w-3.5 dark:invert" 
                         />
                         {tech.name}
                       </Badge>
