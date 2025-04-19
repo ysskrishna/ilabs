@@ -40,6 +40,12 @@ export default function Header() {
           >
             Blogs
           </Link>
+          <Link
+            href="/creator"
+            className="text font-medium hover:text-primary transition-colors"
+          >
+            Creator
+          </Link>
         </div>
       </div>
 
@@ -98,6 +104,13 @@ export default function Header() {
               onClick={() => setIsMenuOpen(false)}
             >
               Blogs
+            </Link>
+            <Link
+              href="/creator"
+              className="block text-sm font-medium hover:text-primary transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Creator
             </Link>
           </div>
         </div>
