@@ -2,6 +2,7 @@
 
 import { useTemplateStore } from "@/providers/template-store-provider"
 import {
+  AngleIcon,
   ArrowBottomLeftIcon,
   ArrowBottomRightIcon,
   ArrowDownIcon,
@@ -13,7 +14,7 @@ import {
   BorderAllIcon,
   DotsHorizontalIcon,
   GridIcon,
-  ValueNoneIcon,
+  ValueNoneIcon
 } from "@radix-ui/react-icons"
 
 import { Button } from "@/components/ui/button"
@@ -42,6 +43,7 @@ import {
 
 import { ResponsivePopover } from "@/components/responsive-popover"
 import { Input } from "@/components/ui/input"
+import { useState } from "react"
 
 const solidColors = [
   // red/pink
@@ -100,148 +102,168 @@ const solidColors = [
 const linearGradients = [
   // red/orange/yellow
   {
-    colorStops: ["rgb(236, 72, 153)", "rgb(239, 68, 68)", "rgb(234, 179, 8)"],
+    colorStops: ["#EC4899", "#EF4444", "#EAB308"],
   },
   {
-    colorStops: ["rgb(202, 138, 4)", "rgb(220, 38, 38)"],
+    colorStops: ["#CA8A04", "#DC2626"],
   },
   {
-    colorStops: ["rgb(244, 63, 94)", "rgb(248, 113, 113)", "rgb(239, 68, 68)"],
+    colorStops: ["#F43F5E", "#F87171", "#EF4444"],
   },
   {
-    colorStops: ["rgb(253, 164, 175)", "rgb(244, 63, 94)"],
+    colorStops: ["#FDA4AF", "#F43F5E"],
   },
   {
-    colorStops: ["rgb(251, 146, 60)", "rgb(251, 113, 133)"],
+    colorStops: ["#FB923C", "#FB7185"],
   },
   {
-    colorStops: ["rgb(251, 113, 133)", "rgb(253, 186, 116)"],
+    colorStops: ["#FB7185", "#FDBA74"],
   },
   {
-    colorStops: [
-      "rgb(254, 202, 202)",
-      "rgb(252, 165, 165)",
-      "rgb(254, 240, 138)",
-    ],
+    colorStops: ["#FECACA", "#FCA5A5", "#FEF08A"],
   },
   {
-    colorStops: [
-      "rgb(199, 210, 254)",
-      "rgb(254, 202, 202)",
-      "rgb(254, 249, 195)",
-    ],
+    colorStops: ["#C7D2FE", "#FECACA", "#FEF9C3"],
   },
 
   // blue/purple
   {
-    colorStops: [
-      "rgb(134, 239, 172)",
-      "rgb(59, 130, 246)",
-      "rgb(147, 51, 234)",
-    ],
+    colorStops: ["#86EFAC", "#3B82F6", "#9333EA"],
   },
   {
-    colorStops: ["rgb(134, 239, 172)", "rgb(192, 132, 252)"],
+    colorStops: ["#86EFAC", "#C084FC"],
   },
   {
-    colorStops: ["rgb(192, 132, 252)", "rgb(250, 204, 21)"],
+    colorStops: ["#C084FC", "#FACC15"],
   },
   {
-    colorStops: ["rgb(165, 180, 252)", "rgb(192, 132, 252)"],
+    colorStops: ["#A5B4FC", "#C084FC"],
   },
   {
-    colorStops: [
-      "rgb(249, 168, 212)",
-      "rgb(216, 180, 254)",
-      "rgb(129, 140, 248)",
-    ],
+    colorStops: ["#F9A8D4", "#D8B4FE", "#818CF8"],
   },
   {
-    colorStops: [
-      "rgb(233, 213, 255)",
-      "rgb(192, 132, 252)",
-      "rgb(107, 33, 168)",
-    ],
+    colorStops: ["#E9D5FF", "#C084FC", "#6B21A8"],
   },
   {
-    colorStops: [
-      "rgb(219, 234, 254)",
-      "rgb(147, 197, 253)",
-      "rgb(59, 130, 246)",
-    ],
+    colorStops: ["#DBEAFE", "#93C5FD", "#3B82F6"],
   },
   {
-    colorStops: ["rgb(165, 243, 252)", "rgb(34, 211, 238)"],
+    colorStops: ["#A5F3FC", "#22D3EE"],
   },
 
   // green
   {
-    colorStops: ["rgb(34, 197, 94)", "rgb(21, 128, 61)"],
+    colorStops: ["#22C55E", "#15803D"],
   },
   {
-    colorStops: ["rgb(16, 185, 129)", "rgb(101, 163, 13)"],
+    colorStops: ["#10B981", "#65A30D"],
   },
   {
-    colorStops: ["rgb(96, 165, 250)", "rgb(52, 211, 153)"],
+    colorStops: ["#60A5FA", "#34D399"],
   },
   {
-    colorStops: ["rgb(187, 247, 208)", "rgb(74, 222, 128)", "rgb(34, 197, 94)"],
+    colorStops: ["#BBF7D0", "#4ADE80", "#22C55E"],
   },
   {
-    colorStops: ["rgb(187, 247, 208)", "rgb(34, 197, 94)"],
+    colorStops: ["#BBF7D0", "#22C55E"],
   },
   {
-    colorStops: [
-      "rgb(187, 247, 208)",
-      "rgb(134, 239, 172)",
-      "rgb(59, 130, 246)",
-    ],
+    colorStops: ["#BBF7D0", "#86EFAC", "#3B82F6"],
   },
   {
-    colorStops: ["rgb(153, 246, 228)", "rgb(217, 249, 157)"],
+    colorStops: ["#99F6E4", "#D9F99D"],
   },
   {
-    colorStops: [
-      "rgb(254, 240, 138)",
-      "rgb(187, 247, 208)",
-      "rgb(134, 239, 172)",
-    ],
+    colorStops: ["#FEF08A", "#BBF7D0", "#86EFAC"],
   },
 
   // gray
   {
-    colorStops: ["#434343 0%", "black 100%"],
+    colorStops: ["#434343", "#000000"],
   },
   {
-    colorStops: ["rgb(17, 24, 39)", "rgb(75, 85, 99)"],
+    colorStops: ["#111827", "#4B5563"],
   },
   {
-    colorStops: ["#868f96 0%", "#596164 100%"],
+    colorStops: ["#868F96", "#596164"],
   },
   {
-    colorStops: ["#d7d2cc 0%", "#304352 100%"],
+    colorStops: ["#D7D2CC", "#304352"],
   },
   {
-    colorStops: ["#8baaaa 0%", "#ae8b9c 100%"],
+    colorStops: ["#8BAAAA", "#AE8B9C"],
   },
   {
-    colorStops: ["rgb(229, 231, 235)", "rgb(156, 163, 175)", "rgb(75, 85, 99)"],
+    colorStops: ["#E5E7EB", "#9CA3AF", "#4B5563"],
   },
   {
-    colorStops: ["#f5f7fa 0%", "#c3cfe2 100%"],
-  },
-  {
-    colorStops: [
-      "#d5d4d0 0%",
-      "#d5d4d0 1%",
-      "#eeeeec 31%",
-      "#efeeec 75%",
-      "#e9e9e7 100%",
-    ],
-  },
+    colorStops: ["#F5F7FA", "#C3CFE2"],
+  }
 ]
 
 const DEFAULT_LINEAR_GRADIENT_DIRECTION: GradientDirection = "to top right"
+
+// Add new type for gradient type
+type GradientType = "linear" | "radial"
+
+// Add new component for color stop management
+function ColorStopList({ colorStops, onChange }: { colorStops: string[], onChange: (colorStops: string[]) => void }) {
+  const convertToHex = (color: string) => {
+    // If it's already a hex color, return it
+    if (color.startsWith('#')) return color
+    
+    // If it's an rgb color, convert it to hex
+    const rgbMatch = color.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/)
+    if (rgbMatch) {
+      const r = parseInt(rgbMatch[1])
+      const g = parseInt(rgbMatch[2])
+      const b = parseInt(rgbMatch[3])
+      return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`
+    }
+    
+    return color
+  }
+
+  return (
+    <div className="space-y-2">
+      {colorStops.map((color, index) => (
+        <div key={index} className="flex items-center gap-2">
+          <div
+            className="size-8 min-w-8 aspect-square rounded-md border"
+            style={{ background: color }}
+          />
+          <Input
+            value={convertToHex(color)}
+            onChange={(e) => {
+              const newColorStops = [...colorStops]
+              newColorStops[index] = e.target.value
+              onChange(newColorStops)
+            }}
+            placeholder="#000000"
+          />
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => {
+              const newColorStops = colorStops.filter((_, i) => i !== index)
+              onChange(newColorStops)
+            }}
+          >
+            Remove
+          </Button>
+        </div>
+      ))}
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={() => onChange([...colorStops, "#000000"])}
+      >
+        Add Color Stop
+      </Button>
+    </div>
+  )
+}
 
 const gridOverlayColors = ["#030712", "#6b7280", "#f9fafb"]
 const gridOverlayDefault: Omit<GridOverlayParams, "pattern"> = {
@@ -250,8 +272,66 @@ const gridOverlayDefault: Omit<GridOverlayParams, "pattern"> = {
   blurRadius: 20,
 }
 
+const directionToAngle: Record<GradientDirection, number> = {
+  "to top": 0,
+  "to top right": 45,
+  "to right": 90,
+  "to bottom right": 135,
+  "to bottom": 180,
+  "to bottom left": 225,
+  "to left": 270,
+  "to top left": 315,
+}
+
 export function BackgroundForm() {
   const template = useTemplateStore((state) => state)
+  const [gradientType, setGradientType] = useState<GradientType>("linear")
+  const [angle, setAngle] = useState(() => {
+    if (template.background.type === "linear-gradient") {
+      return directionToAngle[template.background.direction as GradientDirection] || 0
+    }
+    return 0
+  })
+  const [useCustomAngle, setUseCustomAngle] = useState(false)
+
+  const currentGradient = template.background.type === "linear-gradient" || template.background.type === "radial-gradient"
+    ? template.background
+    : {
+        type: "linear-gradient" as const,
+        direction: DEFAULT_LINEAR_GRADIENT_DIRECTION,
+        colorStops: ["#000000", "#ffffff"],
+        noise: 0.15,
+      }
+
+  const getCurrentDirection = () => {
+    if (useCustomAngle) {
+      return `${angle}deg`
+    }
+    if (template.background.type === "linear-gradient") {
+      return template.background.direction
+    }
+    return DEFAULT_LINEAR_GRADIENT_DIRECTION
+  }
+
+  const handleColorStopsChange = (newColorStops: string[]) => {
+    if (gradientType === "linear") {
+      template.setBackground({
+        type: "linear-gradient",
+        direction: getCurrentDirection(),
+        colorStops: newColorStops,
+        noise: currentGradient.noise,
+        gridOverlay: currentGradient.gridOverlay,
+      })
+    } else {
+      template.setBackground({
+        type: "radial-gradient",
+        direction: "circle at center",
+        colorStops: newColorStops,
+        noise: currentGradient.noise,
+        gridOverlay: currentGradient.gridOverlay,
+      })
+    }
+  }
 
   return (
     <Card>
@@ -263,198 +343,266 @@ export function BackgroundForm() {
       </CardHeader>
       <CardContent>
         <div className="space-y-2">
-          <Tabs defaultValue="linear-gradient" className="w-full">
+          <Tabs defaultValue="gradient" className="w-full">
             <TabsList>
-              <TabsTrigger value="linear-gradient">Gradient</TabsTrigger>
+              <TabsTrigger value="gradient">Gradient</TabsTrigger>
               <TabsTrigger value="color">Solid Color</TabsTrigger>
             </TabsList>
 
-            <TabsContent value="linear-gradient" className="space-y-4">
-              <Card className="p-2">
-                <RadioGroup
-                  value={
-                    template.background.type === "linear-gradient"
-                      ? JSON.stringify(template.background.colorStops)
-                      : undefined
-                  }
-                  onValueChange={(v) => {
-                    template.setBackground({
-                      type: "linear-gradient",
-                      colorStops: JSON.parse(v),
-                      direction:
-                        // if the current background is a linear gradient, use its direction
-                        // otherwise, use the default direction
-                        template.background.type === "linear-gradient"
-                          ? template.background.direction
-                          : DEFAULT_LINEAR_GRADIENT_DIRECTION,
-                      noise: template.background.noise,
-                      gridOverlay: template.background.gridOverlay,
-                    })
-                  }}
-                >
-                  <div className="flex flex-wrap gap-1">
-                    {linearGradients.map(({ colorStops }) => (
-                      <div
-                        key={JSON.stringify(colorStops)}
-                        className="size-9 min-h-9 min-w-9"
-                      >
-                        <RadioGroupItem
-                          value={JSON.stringify(colorStops)}
-                          id={JSON.stringify(colorStops)}
-                          className="peer sr-only"
-                        />
-                        <Label
-                          htmlFor={JSON.stringify(colorStops)}
-                          className="block aspect-square cursor-pointer rounded-md border-2 border-muted bg-popover hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                          style={{
-                            background: toBackgroundShorthand({
-                              type: "linear-gradient",
-                              direction:
-                                // if the current background is a linear gradient, use its direction
-                                // otherwise, use the default direction
-                                template.background.type === "linear-gradient"
-                                  ? template.background.direction
-                                  : DEFAULT_LINEAR_GRADIENT_DIRECTION,
-                              colorStops,
-                            }),
-                          }}
-                        ></Label>
+            <TabsContent value="gradient" className="space-y-4">
+              <Card className="p-4">
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <Label>Gradient Type</Label>
+                    <RadioGroup
+                      value={gradientType}
+                      onValueChange={(v) => setGradientType(v as GradientType)}
+                    >
+                      <div className="flex gap-2">
+                        <RadioGroupItem value="linear" id="linear" />
+                        <Label htmlFor="linear">Linear</Label>
+                        <RadioGroupItem value="radial" id="radial" />
+                        <Label htmlFor="radial">Radial</Label>
                       </div>
-                    ))}
+                    </RadioGroup>
                   </div>
-                </RadioGroup>
+
+                  {gradientType === "linear" && (
+                    <>
+                      <div className="space-y-2">
+                        <RadioGroup
+                          value={
+                            template.background.type === "linear-gradient"
+                              ? JSON.stringify(template.background.colorStops)
+                              : undefined
+                          }
+                          onValueChange={(v) => {
+                            template.setBackground({
+                              type: "linear-gradient",
+                              colorStops: JSON.parse(v),
+                              direction: template.background.type === "linear-gradient" 
+                                ? template.background.direction 
+                                : DEFAULT_LINEAR_GRADIENT_DIRECTION,
+                              noise: template.background.noise,
+                              gridOverlay: template.background.gridOverlay,
+                            })
+                          }}
+                        >
+                          <div className="flex flex-wrap gap-1">
+                            {linearGradients.map(({ colorStops }) => (
+                              <div
+                                key={JSON.stringify(colorStops)}
+                                className="size-9 min-h-9 min-w-9"
+                              >
+                                <RadioGroupItem
+                                  value={JSON.stringify(colorStops)}
+                                  id={JSON.stringify(colorStops)}
+                                  className="peer sr-only"
+                                />
+                                <Label
+                                  htmlFor={JSON.stringify(colorStops)}
+                                  className="block aspect-square cursor-pointer rounded-md border-2 border-muted bg-popover hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                                  style={{
+                                    background: toBackgroundShorthand({
+                                      type: "linear-gradient",
+                                      direction: template.background.type === "linear-gradient"
+                                        ? template.background.direction
+                                        : DEFAULT_LINEAR_GRADIENT_DIRECTION,
+                                      colorStops,
+                                    }),
+                                  }}
+                                ></Label>
+                              </div>
+                            ))}
+                          </div>
+                        </RadioGroup>
+                      </div>
+
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <Label>Direction</Label>
+                        </div>
+
+                        <Card className="p-2">
+                          <RadioGroup
+                            value={template.background.type === "linear-gradient" ? template.background.direction : DEFAULT_LINEAR_GRADIENT_DIRECTION}
+                            onValueChange={(v) => {
+                              if (template.background.type === "linear-gradient") {
+                                const direction = v as GradientDirection
+                                const newAngle = directionToAngle[direction]
+                                setAngle(newAngle)
+                                template.setBackground({
+                                  ...template.background,
+                                  direction: direction,
+                                })
+                              }
+                            }}
+                          >
+                            <div className="grid grid-cols-8 gap-2">
+                              <div>
+                                <RadioGroupItem
+                                  value="to top"
+                                  id="to-top"
+                                  className="peer sr-only"
+                                />
+                                <Label
+                                  htmlFor="to-top"
+                                  className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                                >
+                                  <ArrowUpIcon className="h-4 w-4" />
+                                </Label>
+                              </div>
+
+                              <div>
+                                <RadioGroupItem
+                                  value="to top right"
+                                  id="to-top-right"
+                                  className="peer sr-only"
+                                />
+                                <Label
+                                  htmlFor="to-top-right"
+                                  className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                                >
+                                  <ArrowTopRightIcon className="h-4 w-4" />
+                                </Label>
+                              </div>
+
+                              <div>
+                                <RadioGroupItem
+                                  value="to right"
+                                  id="to-right"
+                                  className="peer sr-only"
+                                />
+                                <Label
+                                  htmlFor="to-right"
+                                  className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                                >
+                                  <ArrowRightIcon className="h-4 w-4" />
+                                </Label>
+                              </div>
+
+                              <div>
+                                <RadioGroupItem
+                                  value="to bottom right"
+                                  id="to-bottom-right"
+                                  className="peer sr-only"
+                                />
+                                <Label
+                                  htmlFor="to-bottom-right"
+                                  className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                                >
+                                  <ArrowBottomRightIcon className="h-4 w-4" />
+                                </Label>
+                              </div>
+
+                              <div>
+                                <RadioGroupItem
+                                  value="to bottom"
+                                  id="to-bottom"
+                                  className="peer sr-only"
+                                />
+                                <Label
+                                  htmlFor="to-bottom"
+                                  className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                                >
+                                  <ArrowDownIcon className="h-4 w-4" />
+                                </Label>
+                              </div>
+
+                              <div>
+                                <RadioGroupItem
+                                  value="to bottom left"
+                                  id="to-bottom-left"
+                                  className="peer sr-only"
+                                />
+                                <Label
+                                  htmlFor="to-bottom-left"
+                                  className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                                >
+                                  <ArrowBottomLeftIcon className="h-4 w-4" />
+                                </Label>
+                              </div>
+
+                              <div>
+                                <RadioGroupItem
+                                  value="to left"
+                                  id="to-left"
+                                  className="peer sr-only"
+                                />
+                                <Label
+                                  htmlFor="to-left"
+                                  className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                                >
+                                  <ArrowLeftIcon className="h-4 w-4" />
+                                </Label>
+                              </div>
+
+                              <div>
+                                <RadioGroupItem
+                                  value="to top left"
+                                  id="to-top-left"
+                                  className="peer sr-only"
+                                />
+                                <Label
+                                  htmlFor="to-top-left"
+                                  className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                                >
+                                  <ArrowTopLeftIcon className="h-4 w-4" />
+                                </Label>
+                              </div>
+                            </div>
+                          </RadioGroup>
+
+                          <div className="mt-4 flex items-center gap-2">
+                            <Slider
+                              value={[angle]}
+                              onValueChange={([value]) => {
+                                setAngle(value)
+                                if (template.background.type === "linear-gradient") {
+                                  template.setBackground({
+                                    ...template.background,
+                                    direction: `${value}deg`,
+                                  })
+                                }
+                              }}
+                              max={355}
+                              step={1}
+                            />
+                            <div className="flex items-center ml-2 gap-1">
+                              <AngleIcon className="h-5 w-5 " />
+                              <Input
+                                type="number"
+                                value={angle}
+                                min={0}
+                                max={355}
+                                onChange={(e) => {
+                                  const value = Math.min(355, Math.max(0, Number(e.target.value)))
+                                  setAngle(value)
+                                  if (template.background.type === "linear-gradient") {
+                                    template.setBackground({
+                                      ...template.background,
+                                      direction: `${value}deg`,
+                                    })
+                                  }
+                                }}
+                                className="w-20"
+                              />
+                            </div>
+                          </div>
+                        </Card>
+                      </div>
+                    </>
+                  )}
+
+                  <div className="space-y-2">
+                    <Label>Color Stops</Label>
+                    <ColorStopList
+                      colorStops={currentGradient.colorStops}
+                      onChange={handleColorStopsChange}
+                    />
+                  </div>
+                </div>
               </Card>
-
-              <div className="space-y-2">
-                <div className="text-sm font-medium">Gradient Direction</div>
-                <Card className="p-2">
-                  <RadioGroup
-                    defaultValue="to top right"
-                    onValueChange={(v) => {
-                      if (template.background.type === "linear-gradient") {
-                        template.setBackground({
-                          ...template.background,
-                          direction: v as GradientDirection,
-                        })
-                      }
-                    }}
-                  >
-                    <div className="grid grid-cols-8 gap-2">
-                      <div>
-                        <RadioGroupItem
-                          value="to top"
-                          id="to-top"
-                          className="peer sr-only"
-                        />
-                        <Label
-                          htmlFor="to-top"
-                          className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                        >
-                          <ArrowUpIcon className="h-4 w-4" />
-                        </Label>
-                      </div>
-
-                      <div>
-                        <RadioGroupItem
-                          value="to top right"
-                          id="to-top-right"
-                          className="peer sr-only"
-                        />
-                        <Label
-                          htmlFor="to-top-right"
-                          className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                        >
-                          <ArrowTopRightIcon className="h-4 w-4" />
-                        </Label>
-                      </div>
-
-                      <div>
-                        <RadioGroupItem
-                          value="to right"
-                          id="to-right"
-                          className="peer sr-only"
-                        />
-                        <Label
-                          htmlFor="to-right"
-                          className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                        >
-                          <ArrowRightIcon className="h-4 w-4" />
-                        </Label>
-                      </div>
-
-                      <div>
-                        <RadioGroupItem
-                          value="to bottom right"
-                          id="to-bottom-right"
-                          className="peer sr-only"
-                        />
-                        <Label
-                          htmlFor="to-bottom-right"
-                          className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                        >
-                          <ArrowBottomRightIcon className="h-4 w-4" />
-                        </Label>
-                      </div>
-
-                      <div>
-                        <RadioGroupItem
-                          value="to bottom"
-                          id="to-bottom"
-                          className="peer sr-only"
-                        />
-                        <Label
-                          htmlFor="to-bottom"
-                          className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                        >
-                          <ArrowDownIcon className="h-4 w-4" />
-                        </Label>
-                      </div>
-
-                      <div>
-                        <RadioGroupItem
-                          value="to bottom left"
-                          id="to-bottom-left"
-                          className="peer sr-only"
-                        />
-                        <Label
-                          htmlFor="to-bottom-left"
-                          className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                        >
-                          <ArrowBottomLeftIcon className="h-4 w-4" />
-                        </Label>
-                      </div>
-
-                      <div>
-                        <RadioGroupItem
-                          value="to left"
-                          id="to-left"
-                          className="peer sr-only"
-                        />
-                        <Label
-                          htmlFor="to-left"
-                          className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                        >
-                          <ArrowLeftIcon className="h-4 w-4" />
-                        </Label>
-                      </div>
-
-                      <div>
-                        <RadioGroupItem
-                          value="to top left"
-                          id="to-top-left"
-                          className="peer sr-only"
-                        />
-                        <Label
-                          htmlFor="to-top-left"
-                          className="flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                        >
-                          <ArrowTopLeftIcon className="h-4 w-4" />
-                        </Label>
-                      </div>
-                    </div>
-                  </RadioGroup>
-                </Card>
-              </div>
             </TabsContent>
 
             <TabsContent value="color">
@@ -496,7 +644,7 @@ export function BackgroundForm() {
                   <Label htmlFor="hex-input">Hex Color</Label>
                   <div className="flex items-center gap-2">
                     <div
-                      className="size-9 flex-shrink-0 aspect-square rounded-md border"
+                      className="size-8 flex-shrink-0 aspect-square rounded-md border"
                       style={{
                         background: template.background.type === "color" ? template.background.color : "#000000",
                       }}

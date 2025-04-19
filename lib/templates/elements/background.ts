@@ -16,15 +16,18 @@ const colorBackgroundSchema = z.object({
 })
 export type ColorBackgroundParams = z.infer<typeof colorBackgroundSchema>
 
-const gradientDirectionSchema = z.enum([
-  "to top",
-  "to top right",
-  "to right",
-  "to bottom right",
-  "to bottom",
-  "to bottom left",
-  "to left",
-  "to top left",
+const gradientDirectionSchema = z.union([
+  z.enum([
+    "to top",
+    "to top right",
+    "to right",
+    "to bottom right",
+    "to bottom",
+    "to bottom left",
+    "to left",
+    "to top left",
+  ]),
+  z.string().regex(/^\d+deg$/)
 ])
 export type GradientDirection = z.infer<typeof gradientDirectionSchema>
 
@@ -39,20 +42,35 @@ export type LinearGradientBackgroundParams = z.infer<
   typeof linearGradientBackgroundSchema
 >
 
+export const radialGradientBackgroundSchema = z.object({
+  type: z.literal("radial-gradient"),
+  direction: z.string(), // e.g. "circle at center"
+  colorStops: z.array(z.string()),
+  noise: z.number().default(0.15),
+  gridOverlay: gridOverlaySchema.optional(),
+})
+export type RadialGradientBackgroundParams = z.infer<
+  typeof radialGradientBackgroundSchema
+>
+
 export const backgroundSchema = z.discriminatedUnion("type", [
   colorBackgroundSchema,
   linearGradientBackgroundSchema,
+  radialGradientBackgroundSchema,
 ])
 export type BackgroundParams = z.infer<typeof backgroundSchema>
 
 export function toBackgroundShorthand(
   background:
     | Pick<LinearGradientBackgroundParams, "type" | "direction" | "colorStops">
+    | Pick<RadialGradientBackgroundParams, "type" | "direction" | "colorStops">
     | Pick<ColorBackgroundParams, "type" | "color">
 ) {
   if (background.type === "color") {
     return background.color
   } else if (background.type === "linear-gradient") {
     return `linear-gradient(${background.direction}, ${background.colorStops.join(", ")})`
+  } else if (background.type === "radial-gradient") {
+    return `radial-gradient(${background.direction}, ${background.colorStops.join(", ")})`
   }
 }
