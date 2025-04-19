@@ -1,5 +1,15 @@
 [
   {
+    "id": 13,
+    "name": "OG Image Generator",
+    "description": "A free and open source tool for generating beautiful Open Graph images, Twitter/X headers, and blog covers - no signup required.",
+    "price": "Free",
+    "category": "Design Tool",
+    "features": ["Open Graph", "Social Media", "Image Generator", "SEO", "No Signup"],
+    "url": "/products/og-image-generator",
+    "featured": true
+  },
+  {
     "id": 1,
     "name": "Express React SEO Starter",
     "description": "A full-stack TypeScript application demonstrating advanced SEO optimization using React-Helmet-Async with Express.js backend.",

@@ -2,9 +2,9 @@ import { MetadataRoute } from "next"
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "OG Image Generator",
-    short_name: "OG Image",
-    description: "Create beautiful OG images for your website for free, in simple clicks.",
+    name: "iLabs",
+    short_name: "iLabs",
+    description: "A collection of innovative tools, boilerplates, and utilities to enhance your development workflow.",
     start_url: "/",
     display: "standalone",
   }
