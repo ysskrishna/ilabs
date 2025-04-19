@@ -14,7 +14,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle
 } from "@/components/ui/card"
@@ -23,7 +22,7 @@ import { Separator } from "@/components/ui/separator"
 const userData = {
   name: "Y. Siva Sai Krishna",
   image: "https://github.com/ysskrishna.png",
-  bio: "Full stack developer specialized in creating cutting-edge web scalable applications. Proficient in SQL, Node.js, Python (Flask, FastAPI), React, Redux and Distributed Systems",
+  bio: "I'm a dynamic Full Stack Developer, Founding Engineer, and an IITM graduate from Bengaluru, India, who loves building cutting-edge web and mobile applications.",
   email: "sivasaikrishnassk@gmail.com",
   website: "https://bento.me/ysskrishna",
   github: "https://github.com/ysskrishna",
@@ -49,39 +48,57 @@ export const metadata: Metadata = {
 }
 
 export default function CreatorPage() {
-  const skills = [
-    "SQL", "Node.js", "Python", "Flask", "FastAPI", "React", 
-    "Redux", "Distributed Systems", "JavaScript", "TypeScript"
-  ]
-
+  const techStack = {
+    languages: [
+      { name: "Python", logo: "python" },
+      { name: "JavaScript", logo: "javascript" },
+      { name: "SQL", logo: "postgresql" },
+      { name: "TypeScript", logo: "typescript" },
+      { name: "HTML", logo: "html5" },
+      { name: "CSS", logo: "css3" },
+      { name: "Bash", logo: "gnubash" },
+    ],
+    technologies: [
+      { name: "FastAPI", logo: "fastapi" },
+      { name: "Express", logo: "express" },
+      { name: "Flask", logo: "flask" },
+      { name: "React", logo: "react" },
+      { name: "Next.js", logo: "nextdotjs" },
+      { name: "React Native", logo: "react" },
+      { name: "GraphQL", logo: "graphql" },
+      { name: "Tailwind CSS", logo: "tailwindcss" },
+      { name: "Node.js", logo: "nodedotjs" },
+      { name: "Bootstrap", logo: "bootstrap" },
+      { name: "Notion", logo: "notion" },
+      { name: "RabbitMQ", logo: "rabbitmq" },
+    ],
+    databases: [
+      { name: "PostgreSQL", logo: "postgresql" },
+      { name: "SQLite", logo: "sqlite" },
+      { name: "MongoDB", logo: "mongodb" },
+      { name: "Redis", logo: "redis" },
+      { name: "Elasticsearch", logo: "elasticsearch" },
+      { name: "Firebase", logo: "firebase" },
+    ],
+    cloudDevOps: [
+      { name: "AWS", logo: "amazonwebservices" },
+      { name: "Docker", logo: "docker" },
+      { name: "GitHub Actions", logo: "githubactions" },
+      { name: "Vercel", logo: "vercel" },
+      { name: "Netlify", logo: "netlify" },
+      { name: "Heroku", logo: "heroku" },
+      { name: "Git", logo: "git" },
+      { name: "GitHub", logo: "github" },
+    ],
+  }
+  
   return (
     <>
       {/* Hero Section */}
       <div className="relative w-full bg-gradient-to-br from-primary/10 via-background to-background">
-        <div className="container mx-auto px-4 py-16 md:py-24">
+        <div className="container mx-auto px-4 py-8 md:py-16">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">{userData.name}</h1>
-            <p className="mt-4 text-xl text-muted-foreground">Full Stack Developer</p>
-            <div className="mt-6 flex justify-center space-x-4">
-              <Link href={userData.github} target="_blank" rel="noopener noreferrer">
-                <Button size="sm" variant="outline">
-                  <GitHubLogoIcon className="mr-2 h-4 w-4" />
-                  GitHub
-                </Button>
-              </Link>
-              <Link href={userData.linkedin} target="_blank" rel="noopener noreferrer">
-                <Button size="sm" variant="outline">
-                  <LinkedInLogoIcon className="mr-2 h-4 w-4" />
-                  LinkedIn
-                </Button>
-              </Link>
-              <Link href={userData.website} target="_blank" rel="noopener noreferrer">
-                <Button size="sm" variant="outline">
-                  <ExternalLinkIcon className="mr-2 h-4 w-4" />
-                  Website
-                </Button>
-              </Link>
-            </div>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">👋 Hi there,  I'm {userData.name}!</h1>
           </div>
         </div>
       </div>
@@ -100,8 +117,18 @@ export default function CreatorPage() {
               </div>
               <CardTitle className="text-2xl font-bold">{userData.name}</CardTitle>
               <CardDescription className="text-md">
-                Full Stack Developer
+                Full Stack Developer <span className="mx-1">|</span> Founding Engineer <span className="mx-1">|</span> IITM Graduate
               </CardDescription>
+              <div className="mt-2 flex items-center justify-center space-x-1">
+                <span>From</span>
+                <img
+                  src="https://flagicons.lipis.dev/flags/4x3/in.svg"
+                  width="15"
+                  alt="India"
+                  className="mx-1"
+                />
+                <span>Bengaluru, India</span>
+              </div>
             </CardHeader>
             <CardContent>
               <div className="flex flex-col space-y-4">
@@ -148,17 +175,6 @@ export default function CreatorPage() {
                     </Link>
                   </div>
                 </div>
-                
-                <Separator />
-                
-                <div>
-                  <h3 className="font-medium text-sm mb-2 text-muted-foreground">SKILLS</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {skills.map((skill) => (
-                      <Badge key={skill} variant="secondary">{skill}</Badge>
-                    ))}
-                  </div>
-                </div>
               </div>
             </CardContent>
           </Card>
@@ -170,44 +186,83 @@ export default function CreatorPage() {
                 <CardTitle>About Me</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="leading-7">{userData.bio}</p>
+                <p className="leading-7">
+                  I'm a dynamic Full Stack Developer, Founding Engineer, and an IITM graduate from Bengaluru, India, 
+                  who loves building cutting-edge web and mobile applications. With extensive experience in backend development, 
+                  frontend technologies, and cloud infrastructure, I specialize in creating scalable solutions for complex problems.
+                </p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle>Portfolio Highlights</CardTitle>
+                <CardTitle>🔧 Tech Stack</CardTitle>
               </CardHeader>
-              <CardContent className="grid gap-6">
-                <div className="space-y-2">
-                  <h3 className="font-medium">Scalable Web Applications</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Designed and developed cutting-edge web applications with focus on scalability and performance.
-                  </p>
+              <CardContent className="space-y-8">
+                <div>
+                  <h3 className="text-lg font-semibold mb-3 text-primary">Languages</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {techStack.languages.map((tech) => (
+                      <Badge key={tech.name} variant="secondary" className="flex items-center gap-1.5 px-2.5 py-1">
+                        <img 
+                          src={`https://cdn.simpleicons.org/${tech.logo}`} 
+                          alt={tech.name} 
+                          className="h-3.5 w-3.5" 
+                        />
+                        {tech.name}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
                 
-                <div className="space-y-2">
-                  <h3 className="font-medium">Backend System Architecture</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Built robust backend systems using Node.js, Python (Flask, FastAPI) with SQL databases.
-                  </p>
+                <div>
+                  <h3 className="text-lg font-semibold mb-3 text-primary">Technologies</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {techStack.technologies.map((tech) => (
+                      <Badge key={tech.name} variant="secondary" className="flex items-center gap-1.5 px-2.5 py-1">
+                        <img 
+                          src={`https://cdn.simpleicons.org/${tech.logo}`} 
+                          alt={tech.name} 
+                          className="h-3.5 w-3.5" 
+                        />
+                        {tech.name}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
                 
-                <div className="space-y-2">
-                  <h3 className="font-medium">Frontend Development</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Created responsive and interactive user interfaces using React and Redux.
-                  </p>
+                <div>
+                  <h3 className="text-lg font-semibold mb-3 text-primary">Databases</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {techStack.databases.map((tech) => (
+                      <Badge key={tech.name} variant="secondary" className="flex items-center gap-1.5 px-2.5 py-1">
+                        <img 
+                          src={`https://cdn.simpleicons.org/${tech.logo}`} 
+                          alt={tech.name} 
+                          className="h-3.5 w-3.5" 
+                        />
+                        {tech.name}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+                
+                <div>
+                  <h3 className="text-lg font-semibold mb-3 text-primary">Cloud & DevOps</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {techStack.cloudDevOps.map((tech) => (
+                      <Badge key={tech.name} variant="secondary" className="flex items-center gap-1.5 px-2.5 py-1">
+                        <img 
+                          src={`https://cdn.simpleicons.org/${tech.logo}`} 
+                          alt={tech.name} 
+                          className="h-3.5 w-3.5" 
+                        />
+                        {tech.name}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
               </CardContent>
-              <CardFooter>
-                <Link href={userData.github} target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" className="w-full">
-                    <GitHubLogoIcon className="mr-2 h-4 w-4" />
-                    View GitHub Projects
-                  </Button>
-                </Link>
-              </CardFooter>
             </Card>
 
             <Card>
