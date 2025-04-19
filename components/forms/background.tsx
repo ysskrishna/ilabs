@@ -41,6 +41,7 @@ import {
 } from "@/lib/templates/elements/background"
 
 import { ResponsivePopover } from "@/components/responsive-popover"
+import { Input } from "@/components/ui/input"
 
 const solidColors = [
   // red/pink
@@ -491,6 +492,32 @@ export function BackgroundForm() {
                     ))}
                   </div>
                 </RadioGroup>
+                <div className="mt-4">
+                  <Label htmlFor="hex-input">Hex Color</Label>
+                  <div className="flex items-center gap-2">
+                    <div
+                      className="size-9 flex-shrink-0 aspect-square rounded-md border"
+                      style={{
+                        background: template.background.type === "color" ? template.background.color : "#000000",
+                      }}
+                    />
+                    <Input
+                      id="hex-input"
+                      value={template.background.type === "color" ? template.background.color : ""}
+                      onChange={(e) => {
+                        const value = e.target.value
+                        if (value.match(/^#[0-9A-Fa-f]{6}$/)) {
+                          template.setBackground({
+                            type: "color",
+                            color: value,
+                            noise: template.background.noise,
+                          })
+                        }
+                      }}
+                      placeholder="#000000"
+                    />
+                  </div>
+                </div>
               </Card>
             </TabsContent>
           </Tabs>
