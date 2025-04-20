@@ -2,10 +2,10 @@ import { notFound } from "next/navigation"
 
 import { siteConfig } from "@/config/site"
 
-import { CustomMDX } from "../mdx"
-import { formatDate, getBlogPosts } from "../utils"
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+import { CustomMDX } from "@/app/blogs/mdx"
+import { getBlogPosts } from "@/app/blogs/utils"
+import config from "@/common/config"
+import { formatDate } from "@/common/utils"
 
 type Params = Promise<{ slug: string }>
 
@@ -26,11 +26,11 @@ export async function generateMetadata({ params }: { params: Params }) {
     description: post?.metadata.summary,
     openGraph: {
       ...siteConfig.openGraph,
-      url: `${baseUrl}/blogs/${post?.slug}`,
+      url: `${config?.baseUrl}/blogs/${post?.slug}`,
     },
     twitter: {
       ...siteConfig.twitter,
-      url: `${baseUrl}/blogs/${post?.slug}`,
+      url: `${config?.baseUrl}/blogs/${post?.slug}`,
     },
   }
 }

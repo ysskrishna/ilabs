@@ -1,8 +1,8 @@
+import { getBlogPosts } from "@/app/blogs/utils"
 import config from "@/common/config"
-import { Input } from "@/components/ui/input"
+import { BlogSearch } from "@/components/blog/BlogSearch"
 import { siteConfig } from "@/config/site"
-import { Search } from "lucide-react"
-import { BlogPosts } from "./posts"
+
 
 export async function generateMetadata() {
   return {
@@ -21,19 +21,12 @@ export async function generateMetadata() {
 }
 
 export default function Page() {
+  const allBlogs = getBlogPosts()
+
   return (
     <div>
       <h1 className="text-4xl font-bold mb-8">Our Blogs</h1>
-      
-      <div className="relative mb-8">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-        <Input
-          placeholder="Search blogs..."
-          className="pl-12 h-14 text-lg"
-        />
-      </div>
-
-      <BlogPosts />
+      <BlogSearch initialBlogs={allBlogs} />
     </div>
   )
 }
