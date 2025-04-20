@@ -504,14 +504,39 @@ export function BackgroundForm() {
                     </RadioGroup>
                   </div>
 
+                  <div className="space-y-2">
+                    <Label>Color Stops</Label>
+                    <ColorStopList
+                      colorStops={currentGradient.colorStops}
+                      onChange={(newColorStops) => {
+                        if (gradientType === "linear") {
+                          template.setBackground({
+                            type: "linear-gradient",
+                            direction: getCurrentDirection(),
+                            colorStops: newColorStops,
+                            noise: currentGradient.noise,
+                            gridOverlay: currentGradient.gridOverlay,
+                          })
+                        } else {
+                          template.setBackground({
+                            type: "radial-gradient",
+                            direction: "circle at center",
+                            colorStops: newColorStops,
+                            noise: currentGradient.noise,
+                            gridOverlay: currentGradient.gridOverlay,
+                          })
+                        }
+                      }}
+                    />
+                  </div>
+
                   {
                     gradientType === "linear" && (
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
-                      <Label>Direction</Label>
-                    </div>
+                          <Label>Direction</Label>
+                        </div>
 
-                    <Card className="p-2">
                       <RadioGroup
                         value={template.background.type === "linear-gradient" ? template.background.direction : DEFAULT_LINEAR_GRADIENT_DIRECTION}
                         onValueChange={(v) => {
@@ -641,7 +666,7 @@ export function BackgroundForm() {
                         </div>
                       </RadioGroup>
 
-                      <div className="mt-4 flex items-center gap-2">
+                      <div className="mt-4 px-1 flex items-center gap-2">
                         <Slider
                           value={[angle]}
                           onValueChange={([value]) => {
@@ -677,35 +702,8 @@ export function BackgroundForm() {
                           />
                         </div>
                       </div>
-                    </Card>
                     </div>
                   )}
-
-                  <div className="space-y-2">
-                    <Label>Color Stops</Label>
-                    <ColorStopList
-                      colorStops={currentGradient.colorStops}
-                      onChange={(newColorStops) => {
-                        if (gradientType === "linear") {
-                          template.setBackground({
-                            type: "linear-gradient",
-                            direction: getCurrentDirection(),
-                            colorStops: newColorStops,
-                            noise: currentGradient.noise,
-                            gridOverlay: currentGradient.gridOverlay,
-                          })
-                        } else {
-                          template.setBackground({
-                            type: "radial-gradient",
-                            direction: "circle at center",
-                            colorStops: newColorStops,
-                            noise: currentGradient.noise,
-                            gridOverlay: currentGradient.gridOverlay,
-                          })
-                        }
-                      }}
-                    />
-                  </div>
                 </div>
               </Card>
             </TabsContent>
