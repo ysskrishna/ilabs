@@ -48,7 +48,7 @@ export const minimalistTemplateDefault: MinimalistTemplate = {
   background: {
     type: "linear-gradient",
     direction: "to top right",
-    colorStops: ["#434343 0%", "black 100%"],
+    colorStops: ["#434343", "#000000"],
     noise: 0.05,
   },
   canvas: {

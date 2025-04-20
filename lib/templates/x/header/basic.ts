@@ -47,7 +47,7 @@ export const basicTemplateDefault: BasicTemplate = {
   background: {
     type: "linear-gradient",
     direction: "to top right",
-    colorStops: ["rgb(17, 24, 39)", "rgb(75, 85, 99)"],
+    colorStops: ["#111827", "#4B5563"],
     noise: 0.1,
     gridOverlay: {
       pattern: "grid",

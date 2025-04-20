@@ -63,9 +63,9 @@ export const logosTemplateDefault: LogosTemplate = {
     type: "linear-gradient",
     direction: "to top right",
     colorStops: [
-      "rgb(254, 202, 202)",
-      "rgb(252, 165, 165)",
-      "rgb(254, 240, 138)",
+      "#FECACA",
+      "#FCA5A5",
+      "#FEF08A",
     ],
     noise: 0.15,
   },
