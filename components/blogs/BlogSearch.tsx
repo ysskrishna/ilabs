@@ -1,6 +1,6 @@
 'use client'
 
-import { BlogCard } from "@/components/blog/BlogCard"
+import { BlogCard } from "@/components/blogs/BlogCard"
 import { Input } from "@/components/ui/input"
 import { Search } from "lucide-react"
 import { useMemo, useState } from "react"

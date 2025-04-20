@@ -1,6 +1,6 @@
 import { getBlogPosts } from "@/app/blogs/utils"
 import config from "@/common/config"
-import { BlogSearch } from "@/components/blog/BlogSearch"
+import { BlogSearch } from "@/components/blogs/BlogSearch"
 import { siteConfig } from "@/config/site"
 
 

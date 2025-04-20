@@ -1,6 +1,6 @@
 "use client"
 
-import { ProductCard } from "@/components/product/ProductCard"
+import { ProductCard } from "@/components/products/ProductCard"
 import { Input } from "@/components/ui/input"
 import productsData from "@/json/products.json"
 import { Search } from "lucide-react"

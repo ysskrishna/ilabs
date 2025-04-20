@@ -1,5 +1,5 @@
 "use client"
-import { ProductCard } from "@/components/product/ProductCard"
+import { ProductCard } from "@/components/products/ProductCard"
 import productsData from "@/json/products.json"
 import Link from "next/link"
 
