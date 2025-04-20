@@ -19,7 +19,8 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Params }) {
   const { slug } = await params
-  const post = await getBlogPosts().find((post) => post.slug === slug)
+  const posts = await getBlogPosts()
+  const post = posts.find((post) => post.slug === slug)
   return {
     ...siteConfig,
     title: `${post?.metadata.title} | ${siteConfig.name}`,
@@ -37,7 +38,8 @@ export async function generateMetadata({ params }: { params: Params }) {
 
 export default async function Blog({ params }: { params: Params }) {
   const { slug } = await params
-  let post = await getBlogPosts().find((post) => post.slug === slug)
+  const posts = await getBlogPosts()
+  let post = posts.find((post) => post.slug === slug)
 
   if (!post) {
     notFound()
