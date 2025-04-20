@@ -18,7 +18,6 @@ import {
 import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-import ReasonsSection from "@/components/home/ReasonsSection"
 
 export const metadata: Metadata = {
   title: "OG Image Generator",
@@ -151,8 +150,6 @@ export default function OGImageGenerator() {
             </div>
           </div>
         </section>
-
-        <ReasonsSection />
 
         <HowToAddSection />
       </div>
