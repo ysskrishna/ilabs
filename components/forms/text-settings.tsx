@@ -1,10 +1,3 @@
-import {
-  FontFamily,
-  FontWeight,
-  fontWeights,
-  supportedFonts,
-} from "@/lib/fonts"
-import { cn } from "@/lib/utils"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
@@ -16,6 +9,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import {
+  FontFamily,
+  FontWeight,
+  fontWeights,
+  supportedFonts,
+} from "@/lib/fonts"
+import { cn } from "@/lib/utils"
 
 interface TextSettingsProps {
   fontFamily: FontFamily
@@ -114,31 +114,60 @@ export function TextSettings({
 
         <div className="grid grid-cols-3 items-center gap-4">
           <Label htmlFor="text-color">Text Color</Label>
-          <RadioGroup
-            id="text-color"
-            className="col-span-2"
-            value={color}
-            onValueChange={onChangeColor}
-          >
-            <div className="flex flex-wrap gap-1">
-              {textColors.map((color) => (
-                <div key={color} className="h-9 min-h-9 w-9 min-w-9">
-                  <RadioGroupItem
-                    value={color}
-                    id={color}
-                    className="peer sr-only"
-                  />
-                  <Label
-                    htmlFor={color}
-                    className="block aspect-square cursor-pointer rounded-md border-2 border-muted bg-popover hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                    style={{
-                      background: color,
-                    }}
-                  ></Label>
-                </div>
-              ))}
+          <div className="col-span-2 space-y-2">
+            <RadioGroup
+              id="text-color"
+              value={color}
+              onValueChange={onChangeColor}
+            >
+              <div className="flex flex-wrap gap-1">
+                {textColors.map((color) => (
+                  <div key={color} className="h-9 min-h-9 w-9 min-w-9">
+                    <RadioGroupItem
+                      value={color}
+                      id={color}
+                      className="peer sr-only"
+                    />
+                    <Label
+                      htmlFor={color}
+                      className="block aspect-square cursor-pointer rounded-md border-2 border-muted bg-popover hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                      style={{
+                        background: color,
+                      }}
+                    ></Label>
+                  </div>
+                ))}
+              </div>
+            </RadioGroup>
+            <div className="flex items-center gap-2">
+              <div
+                className="size-8 flex-shrink-0 aspect-square rounded-md border"
+                style={{
+                  background: color,
+                }}
+              />
+              <Input
+                value={color}
+                onChange={(e) => {
+                  const value = e.target.value
+                  // Allow partial input while typing
+                  if (value === "" || value.match(/^#[0-9A-Fa-f]{0,6}$/i)) {
+                    onChangeColor(value)
+                  }
+                }}
+                onBlur={(e) => {
+                  const value = e.target.value
+                  // Ensure proper hex format on blur
+                  if (value && !value.match(/^#[0-9A-Fa-f]{6}$/i)) {
+                    // If incomplete, pad with zeros
+                    const hex = value.replace("#", "").padEnd(6, "0")
+                    onChangeColor(`#${hex}`)
+                  }
+                }}
+                placeholder="#000000"
+              />
             </div>
-          </RadioGroup>
+          </div>
         </div>
       </div>
     </div>

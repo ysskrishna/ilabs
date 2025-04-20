@@ -757,10 +757,24 @@ export function BackgroundForm() {
                       value={template.background.type === "color" ? template.background.color : ""}
                       onChange={(e) => {
                         const value = e.target.value
-                        if (value.match(/^#[0-9A-Fa-f]{6}$/)) {
+                        // Allow partial input while typing
+                        if (value === "" || value.match(/^#[0-9A-Fa-f]{0,6}$/i)) {
                           template.setBackground({
                             type: "color",
                             color: value,
+                            noise: template.background.noise,
+                          })
+                        }
+                      }}
+                      onBlur={(e) => {
+                        const value = e.target.value
+                        // Ensure proper hex format on blur
+                        if (value && !value.match(/^#[0-9A-Fa-f]{6}$/i)) {
+                          // If incomplete, pad with zeros
+                          const hex = value.replace("#", "").padEnd(6, "0")
+                          template.setBackground({
+                            type: "color",
+                            color: `#${hex}`,
                             noise: template.background.noise,
                           })
                         }
