@@ -2,22 +2,12 @@
 
 import { BlogCard } from "@/components/blogs/BlogCard"
 import { Input } from "@/components/ui/input"
+import { BlogCardProps } from "@/types/blog"
 import { Search } from "lucide-react"
 import { useMemo, useState } from "react"
 
-interface BlogPost {
-  slug: string
-  metadata: {
-    title: string
-    publishedAt: string
-    summary: string
-    image?: string
-  }
-  content: string
-}
-
 interface BlogSearchProps {
-  initialBlogs: BlogPost[]
+  initialBlogs: BlogCardProps[]
 }
 
 export function BlogSearch({ initialBlogs }: BlogSearchProps) {

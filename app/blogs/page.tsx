@@ -20,8 +20,8 @@ export async function generateMetadata() {
   }
 }
 
-export default function Page() {
-  const allBlogs = getBlogPosts()
+export default async function Page() {
+  const allBlogs = await getBlogPosts()
 
   return (
     <div>

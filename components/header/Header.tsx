@@ -89,7 +89,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="absolute top-16 left-0 right-0 bg-background border-b md:hidden">
+        <div className="absolute top-16 left-0 right-0 bg-background border-b md:hidden z-10">
           <div className="px-4 py-3 space-y-3">
             <Link
               href="/products"

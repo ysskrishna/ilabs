@@ -95,7 +95,7 @@ export default function CreatorPage() {
   return (
     <>
       {/* Hero Section */}
-      <div className="relative w-full bg-gradient-to-br from-primary/10 via-background to-background">
+      <div className="relative w-full bg-gradient-to-br from-primary/10 via-background to-background z-0">
         <div className="container mx-auto px-4 py-8 md:py-16">
           <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
@@ -105,7 +105,7 @@ export default function CreatorPage() {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-10">
+      <div className="py-10">
         <div className="grid gap-8 md:grid-cols-[1fr_2fr]">
           {/* Profile Card */}
           <Card className="h-fit">

@@ -36,7 +36,7 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="mx-auto min-h-[calc(100dvh-84px)] max-w-7xl px-2 py-6 sm:px-6 lg:px-8">
+          <main className="mx-auto min-h-[calc(100dvh-84px)] max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             <TemplateStoreProvider>{children}</TemplateStoreProvider>
           </main>
 

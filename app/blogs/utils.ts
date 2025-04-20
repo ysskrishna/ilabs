@@ -1,9 +1,11 @@
 import { BlogMetadata } from '@/types/blog'
-import fs from 'fs'
+import fs from 'fs/promises'
 import path from 'path'
 
+// Make this a server component
+export const dynamic = 'force-dynamic'
 
-function parseFrontmatter(fileContent: string) {
+async function parseFrontmatter(fileContent: string) {
   let frontmatterRegex = /---\s*([\s\S]*?)\s*---/
   let match = frontmatterRegex.exec(fileContent)
   let frontMatterBlock = match![1]
@@ -21,20 +23,21 @@ function parseFrontmatter(fileContent: string) {
   return { metadata: metadata as BlogMetadata, content }
 }
 
-function getMDXFiles(dir: string) {
-  return fs.readdirSync(dir).filter((file) => path.extname(file) === '.mdx')
+async function getMDXFiles(dir: string) {
+  const files = await fs.readdir(dir)
+  return files.filter((file) => path.extname(file) === '.mdx')
 }
 
-function readMDXFile(filePath: string) {
-  let rawContent = fs.readFileSync(filePath, 'utf-8')
+async function readMDXFile(filePath: string) {
+  const rawContent = await fs.readFile(filePath, 'utf-8')
   return parseFrontmatter(rawContent)
 }
 
-function getMDXData(dir: string) {
-  let mdxFiles = getMDXFiles(dir)
-  return mdxFiles.map((file) => {
-    let { metadata, content } = readMDXFile(path.join(dir, file))
-    let slug = path.basename(file, path.extname(file))
+async function getMDXData(dir: string) {
+  const mdxFiles = await getMDXFiles(dir)
+  const postsPromises = mdxFiles.map(async (file) => {
+    const { metadata, content } = await readMDXFile(path.join(dir, file))
+    const slug = path.basename(file, path.extname(file))
 
     return {
       metadata,
@@ -42,8 +45,10 @@ function getMDXData(dir: string) {
       content,
     }
   })
+  
+  return Promise.all(postsPromises)
 }
 
-export function getBlogPosts() {
+export async function getBlogPosts() {
   return getMDXData(path.join(process.cwd(), 'app', 'blogs', 'posts'))
 }
