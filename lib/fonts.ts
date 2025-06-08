@@ -1,6 +1,6 @@
 import { z } from "zod"
 
-import type { Template } from "./templates"
+import type { Template } from "@/lib/templates"
 
 const DEFAULT_WEIGHT = 400
 const DEFAULT_FONT_FAMILY = "inter"

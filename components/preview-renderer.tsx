@@ -1,14 +1,14 @@
 "use client"
 
-import { useEffect } from "react"
 import { useTemplateStore } from "@/providers/template-store-provider"
+import { useEffect } from "react"
 import satori from "satori"
 
+import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { getFontsFromTemplate, getFontUrl } from "@/lib/fonts"
 import { getIconCode, loadEmoji } from "@/lib/twemoji"
-import { AspectRatio } from "@/components/ui/aspect-ratio"
 
-import { templates } from "./templates"
+import { templates } from "@/components/templates"
 
 export default function PreviewRenderer() {
   const template = useTemplateStore((state) => state)
@@ -66,6 +66,7 @@ export default function PreviewRenderer() {
     renderSvg()
   }, [template.params, template.background, template.canvas])
 
+  console.log("template.previewSvg", template.previewSvg)
   return (
     <AspectRatio ratio={16 / 9}>
       {/* <Image

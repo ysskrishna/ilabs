@@ -1,6 +1,5 @@
-
-import { HtmlCodeBlock, NextjsCodeBlock } from "./howToAddSection/CodeBlock"
-import { TabsWrapper } from "./howToAddSection/TabsWrapper"
+import { HtmlCodeBlock, NextjsCodeBlock } from "@/components/products/og-image-generator/howToAddSection/CodeBlock"
+import { TabsWrapper } from "@/components/products/og-image-generator/howToAddSection/TabsWrapper"
 
 export default function HowToAddSection() {
   return (

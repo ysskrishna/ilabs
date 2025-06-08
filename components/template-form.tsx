@@ -2,7 +2,7 @@
 
 import { useTemplateStore } from "@/providers/template-store-provider"
 
-import { templates } from "./forms/template-params"
+import { templates } from "@/components/forms/template-params"
 
 export default function TemplateForm() {
   const templateName = useTemplateStore((state) => state.name)

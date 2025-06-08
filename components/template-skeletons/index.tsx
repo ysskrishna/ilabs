@@ -1,6 +1,6 @@
-import * as blog from "./blog"
-import * as og from "./open-graph"
-import * as x from "./x"
+import * as blog from "@/components/template-skeletons/blog"
+import * as og from "@/components/template-skeletons/open-graph"
+import * as x from "@/components/template-skeletons/x"
 
 export const skeletons = {
   // Open Graph

@@ -4,7 +4,7 @@ import React from "react"
 
 import { FileType } from "@/types/mdxDocument"
 
-import { useLanguage } from "./LanguageContext"
+import { useLanguage } from "@/components/mdx/LanguageSelector/LanguageContext"
 
 interface CodeBlockWrapperProps {
   language: string

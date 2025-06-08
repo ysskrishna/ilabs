@@ -2,7 +2,7 @@
 
 import { IoChevronDownOutline } from "react-icons/io5"
 
-import { useLanguage } from "./LanguageContext"
+import { useLanguage } from "@/components/mdx/LanguageSelector/LanguageContext"
 
 const labelMap = {
   jsx: "JavaScript",

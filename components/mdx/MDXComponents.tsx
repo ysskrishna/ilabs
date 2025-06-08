@@ -1,15 +1,15 @@
 import { Aside } from "@/components/mdx/Aside";
 import { Callout } from "@/components/mdx/Callout";
+import CodeBlockWrapper from "@/components/mdx/LanguageSelector/CodeBlockWrapper";
 import { MdxCard } from "@/components/mdx/MdxCard";
+import { ThemeAwareImage } from "@/components/mdx/ThemeAwareImage";
 import { FileType } from "@/types/mdxDocument";
 import React, { JSX, ReactNode } from "react";
 import { CiCircleCheck } from "react-icons/ci";
 import { RxCross2 } from "react-icons/rx";
-import CodeBlockWrapper from "./LanguageSelector/CodeBlockWrapper";
-import { ThemeAwareImage } from "./ThemeAwareImage";
 
-import CodeBlock from "./CodeBlock";
-import CodeBlockWithHeader from "./CodeBlockWithHeader";
+import CodeBlock from "@/components/mdx/CodeBlock";
+import CodeBlockWithHeader from "@/components/mdx/CodeBlockWithHeader";
 interface HeadingProps {
   level: 1 | 2 | 3 | 4 | 5 | 6;
   className: string;

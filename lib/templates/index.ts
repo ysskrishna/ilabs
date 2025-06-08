@@ -1,8 +1,8 @@
 import { z } from "zod"
 
-import * as blog from "./blog"
-import * as og from "./open-graph"
-import * as x from "./x"
+import * as blog from "@/lib/templates/blog"
+import * as og from "@/lib/templates/open-graph"
+import * as x from "@/lib/templates/x"
 
 const templateNameSchema = z.union([
   // Open Graph

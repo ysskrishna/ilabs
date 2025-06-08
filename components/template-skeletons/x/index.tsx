@@ -1,1 +1,2 @@
-export * as header from "./header"
+export * as header from "@/components/template-skeletons/x/header";
+

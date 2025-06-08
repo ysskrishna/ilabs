@@ -5,8 +5,8 @@ import { SiJavascript, SiTypescript } from "react-icons/si"
 
 import { FileType } from "@/types/mdxDocument"
 
-import CopyButton from "./CopyButton"
-import LanguageSelector from "./LanguageSelector"
+import CopyButton from "@/components/mdx/CopyButton"
+import LanguageSelector from "@/components/mdx/LanguageSelector"
 
 const getIcon = (language: string) => {
   switch (language) {

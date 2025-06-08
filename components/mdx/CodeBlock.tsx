@@ -1,4 +1,4 @@
-import CopyButton from "./CopyButton"
+import CopyButton from "@/components/mdx/CopyButton"
 
 const extractTextFromNode = (node: any): string => {
   if (typeof node === "string") return node

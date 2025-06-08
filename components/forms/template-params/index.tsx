@@ -1,6 +1,6 @@
-import * as blog from "./blog"
-import * as og from "./open-graph"
-import * as x from "./x"
+import * as blog from "@/components/forms/template-params/blog"
+import * as og from "@/components/forms/template-params/open-graph"
+import * as x from "@/components/forms/template-params/x"
 
 export const templates = {
   // Open Graph

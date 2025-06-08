@@ -1,9 +1,9 @@
 "use client"
 
-import { useState, type JSX } from "react"
 import { useTemplateStore } from "@/providers/template-store-provider"
+import { useState, type JSX } from "react"
 
-import type { Template } from "@/lib/templates"
+import { skeletons } from "@/components/template-skeletons"
 import { Button } from "@/components/ui/button"
 import {
   Carousel,
@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { skeletons } from "@/components/template-skeletons"
+import type { Template } from "@/lib/templates"
 
 import {
   BlogLogo,
@@ -29,7 +29,7 @@ import {
   OpenGraphLogo,
   ProductHunt,
   TwitterLogo,
-} from "./icons"
+} from "@/components/icons"
 
 type Platform =
   | "open-graph"

@@ -1,12 +1,12 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
 import { useTemplateStore } from "@/providers/template-store-provider"
 import { DownloadIcon } from "@radix-ui/react-icons"
+import { useEffect, useRef, useState } from "react"
 
 import { Button } from "@/components/ui/button"
 
-import { FormatSelector, ImageFormat } from "./format-selector"
+import { FormatSelector, ImageFormat } from "@/components/format-selector"
 
 function initResvgWorker():
   | ((msg: { svg: string; width: number; format?: string }) => Promise<string>)
