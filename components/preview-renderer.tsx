@@ -66,7 +66,6 @@ export default function PreviewRenderer() {
     renderSvg()
   }, [template.params, template.background, template.canvas])
 
-  console.log("template.previewSvg", template.previewSvg)
   return (
     <AspectRatio ratio={16 / 9}>
       {/* <Image
