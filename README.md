@@ -1,5 +1,7 @@
 # iLabs
 
+[![License: AGPL-3.0](https://img.shields.io/github/license/ysskrishna/ilabs)](https://github.com/ysskrishna/ilabs/blob/main/LICENSE) [![GitHub release](https://img.shields.io/github/v/release/ysskrishna/ilabs?label=release)](https://github.com/ysskrishna/ilabs/releases) [![Author site](https://img.shields.io/badge/author-ysskrishna.space-informational)](https://ysskrishna.space)
+
 A collection of free developer tools and resources, including image generation tools, boilerplate templates, utility applications, and more - designed to help developers streamline their workflow and enhance their projects.
 
 ## [OG Image Generator](https://ilabs.vercel.app/products/og-image-generator)
@@ -113,17 +115,38 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📝 License
+## Built and maintained by
 
-Copyright (c) 2025 Y. Siva Sai Krishna
+iLabs is built and maintained by:
 
-This project is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0) License - see the [LICENSE](LICENSE) file for details.
+| | Name | GitHub | Role |
+|---|------|--------|------|
+| <img src="https://github.com/ysskrishna.png?size=120" width="60" height="60" alt="Y. Siva Sai Krishna"> | **Y. Siva Sai Krishna** | [@ysskrishna](https://github.com/ysskrishna) | Creator |
+
+## Changelog
+
+See [CHANGELOG](CHANGELOG.md) for release history.
+
+## Support
+
+If you find this project helpful:
+
+- ⭐ Star the repository
+- 🐛 [Report issues](https://github.com/ysskrishna/ilabs/issues)
+- 🔀 Submit pull requests
+- 💝 [Sponsor on GitHub](https://github.com/sponsors/ysskrishna)
+
+## License
+
+AGPL-3.0 © [Y. Siva Sai Krishna](https://github.com/ysskrishna) — see [LICENSE](LICENSE) for details.
 
 ---
 
-Built by [ysskrishna](https://github.com/ysskrishna)
-
-This project is inspired by and built upon:
-
-- [ogImage.click](https://github.com/weijunext/ogimage-click)
-- [imgsrc-app](https://github.com/FadyMak/imgsrc-app)
+<p align="left">
+  <a href="https://github.com/ysskrishna">Author's GitHub</a> •
+  <a href="https://linkedin.com/in/ysskrishna">Author's LinkedIn</a> •
+  <a href="https://ysskrishna.space">Author's site</a> •
+  <a href="https://github.com/weijunext/ogimage-click">ogImage.click</a> •
+  <a href="https://github.com/FadyMak/imgsrc-app">imgsrc-app</a> •
+  <a href="https://github.com/ysskrishna/ilabs/issues">Report Issues</a>
+</p>
